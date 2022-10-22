@@ -1,3 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'style/normalize.css';
 @import 'style/layout.scss';
+
+a {
+  color: #97d1d2;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
