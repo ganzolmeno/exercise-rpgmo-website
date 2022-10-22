@@ -42,3 +42,26 @@ body {
   padding: 5px;
   text-shadow: 1px 1px #000;
 }
+
+@media screen and (max-width: 1000px) {
+
+  :root {
+    --max-width: 100%;
+  }
+
+  app-header {
+    display: none;
+  }
+
+  .body {
+    margin-top: 50px;
+    width: calc(100% - 2px);
+    app-left-side {
+      display: none; // TODO:
+    }
+
+    &>.container {
+      width: var(--max-width); // TODO:
+    }
+  }
+}

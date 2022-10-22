@@ -1,0 +1,264 @@
+.menu-nav {
+  width: 100%;
+  height: 40px;
+  margin-top: 8px;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  background: #51b6c7;
+  background-image: url(^assets/img/broken-glass.png);
+  border: #d9c97c solid 1px;
+  box-shadow: 0px 3px 5px #333;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+  list-style-image: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.home {
+  padding: 5px 18px;
+  display: none;
+
+  img {
+    object-fit: contain;
+    height: 100%;
+  }
+}
+
+.menu .play {
+  display: none;
+}
+
+.play {
+  padding: 0 10px;
+  height: 100%;
+  line-height: 40px;
+  color: #fbe5b8;
+  font-size: 1.2em;
+  font-weight: 700;
+  background-image: linear-gradient(180deg, rgba(203, 184, 93, 0.9), rgba(137, 100, 23, .9));
+  &:hover {
+    color: white;
+    background-image: linear-gradient(180deg, rgba(137, 100, 23, .9), rgba(203, 184, 93, 0.9));
+  }
+}
+
+.hamburger {
+  width: 40px;
+  padding: 12px 10px;
+  display: none;
+  cursor: pointer;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  &>div {
+    width: 100%;
+    height: 4px;
+    background: #fff;
+    position: relative;
+    border-radius: 5px;
+
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      background: inherit;
+      width: inherit;
+      height: inherit;
+      border-radius: 5px;
+    }
+
+    &::after {
+      top: 0.65em;
+    }
+
+    &::before {
+      bottom: 0.65em;
+    }
+  }
+}
+
+ul.menu {
+  margin: 0;
+  margin-left: 258px;
+  padding: 0;
+  display: flex;
+  width: 504px;
+  justify-content: space-around;
+}
+
+li {
+  margin: 0;
+
+  a,
+  div {
+    display: block;
+    color: #fff;
+    backdrop-filter: blur(3px);
+    background: rgba(0, 0, 0, .2);
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 50px;
+    transition: 0.3s;
+    line-height: 40px;
+    cursor: pointer;
+  }
+}
+
+.submenu a {
+  background: unset;
+  backdrop-filter: unset;
+  border-radius: unset;
+}
+
+li:hover>a,
+li a:hover {
+  background: rgba(0, 0, 0, .4);
+}
+
+.has-dropdown::after {
+  background: #fff;
+  width: 10px;
+  border-width: 0 5px 0 5px;
+  clip-path: polygon(0% 20%, 50% 70%, 100% 20%);
+  content: '';
+  display: inline-block;
+  height: 10px;
+  margin: 0 -4px 0 4px;
+}
+
+.submenu {
+  position: absolute;
+  white-space: nowrap;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top center;
+  margin: 0;
+  z-index: 4;
+}
+
+.menu>li:hover>.has-dropdown+.submenu,
+.submenu>li:hover>.has-dropdown+.submenu {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+@media screen and (max-width: 1000px) {
+
+  .menu-nav {
+    margin: 0;
+    height: 45px;
+    justify-content: space-between;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: calc(100% - 2px);
+  }
+
+  ul.menu {
+    flex-flow: column;
+    justify-content: flex-start;
+    transform-origin: top center;
+    box-shadow: 0px 3px 5px #333;
+    border: #d9c97c solid 1px;
+    background: #555;
+    width: calc(100% - 2px);
+    height: calc(100vh - 55px);
+    max-height: calc(100vh - 55px);
+    position: absolute;
+    top: 50px;
+    right: 0px;
+    overflow: auto;
+    align-items: center;
+  }
+
+  .menu>li {
+    margin: 3px;
+    width: calc(100% - 6px);
+  }
+
+  li>ul {
+    display: inline-flex;
+    flex-wrap: wrap;
+    opacity: unset;
+    transform: unset;
+    position: relative;
+  }
+
+  .menu>li>a,
+  .menu>li>div {
+    padding: 0 20px;
+  }
+
+  .menu>li a,
+  .menu>li>div {
+    border-radius: unset;
+  }
+
+  .submenu a {
+    margin: 6px 4px;
+    padding: 0 16px;
+    border: 2px #222 dashed;
+    background: #494949;
+  }
+
+  .submenu {
+    border: unset;
+    box-shadow: unset;
+    margin-left: 40px;
+    background: unset;
+  }
+
+  li a {
+    height: 45px;
+    line-height: 45px;
+    border: 2px #222 dashed;
+  }
+
+  .menu>.play {
+    display: block;
+    height: 45px;
+    line-height: 45px;
+    margin: 6px 0;
+    text-align: center;
+    max-width: 180px;
+  }
+
+  nav>.play {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .home {
+    display: block;
+  }
+
+  .has-dropdown::after {
+    display: none;
+  }
+
+  .menu>li>div {
+    border-radius: unset;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  li>ul {
+    width: -webkit-fill-available;
+    border-top: 2px solid #d9c97c;
+  }
+}

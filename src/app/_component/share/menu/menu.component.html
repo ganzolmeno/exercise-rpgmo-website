@@ -1,1 +1,38 @@
-<p>menu works!</p>
+<nav class="menu-nav">
+
+  <a class="home" routerLink=""><img src="assets/img/logo.png"></a>
+
+  <ul class="menu" [style.display]="isOpen?'flex':'none'">
+    <li>
+      <div class="has-dropdown" i18n="@@About">About</div>
+      <ul class="submenu grayblock">
+        <li><a routerLink="/news" i18n="@@" News>News</a></li>
+        <li><a routerLink="">RPG MO</a></li>
+        <li><a routerLink="/media" i18n="@@Media">Media</a></li>
+        <li><a routerLink="/credits" i18n="@@Credits">Credits</a></li>
+        <li><a routerLink="/contact" i18n="@@Contact">Contact</a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="has-dropdown" i18n="@@Guide">Guide</div>
+      <ul class="submenu grayblock">
+        <li><a routerLink="/wiki" i18n="@@Wiki">Wiki</a></li>
+        <li><a routerLink="/register" i18n="@@Register">Register</a></li>
+        <li><a routerLink="/register" fragment="lost_password" i18n="@@Lost password">Lost password</a></li>
+        <li><a routerLink="/register" fragment="transfer" i18n="@@Transfer">Transfer</a></li>
+      </ul>
+    </li>
+    <li><a routerLink="/highscore" i18n="@@Highscore">Highscore</a></li>
+    <li><a routerLink="/forum" i18n="@@Forum">Forum</a></li>
+    <li><a routerLink="/download" i18n="@@Download">Download</a></li>
+    <a class="play" routerLink="/play" i18n="@@PLAY FREE NOW">PLAY FREE NOW</a>
+
+  </ul>
+
+  <a class="play" routerLink="/play" i18n="@@PLAY FREE NOW">PLAY FREE NOW</a>
+
+  <div class="hamburger" (click)="toggle()">
+    <div></div>
+  </div>
+
+</nav>
