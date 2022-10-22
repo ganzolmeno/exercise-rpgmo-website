@@ -1,3 +1,13 @@
-<app-header></app-header>
-<app-menu></app-menu>
-<app-home></app-home>
+<div>
+  <app-header></app-header>
+  <app-menu></app-menu>
+
+  <div>
+    <app-left-side></app-left-side>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <app-copyright-line></app-copyright-line>
+</div>
