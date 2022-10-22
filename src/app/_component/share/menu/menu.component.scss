@@ -154,7 +154,15 @@ li a:hover {
   transform: scaleY(1);
 }
 
+app-status-line{
+  display: none;
+}
+
 @media screen and (max-width: 1000px) {
+
+  app-status-line{
+    display: block;
+  }
 
   .menu-nav {
     margin: 0;
@@ -244,6 +252,10 @@ li a:hover {
   }
 
   .home {
+    display: block;
+  }
+
+  app-status-line {
     display: block;
   }
 

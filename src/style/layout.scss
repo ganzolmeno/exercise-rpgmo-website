@@ -43,6 +43,12 @@ body {
   text-shadow: 1px 1px #000;
 }
 
+.divider {
+  height: 9px;
+  background: #424242;
+  margin: 6px 4px;
+}
+
 @media screen and (max-width: 1000px) {
 
   :root {

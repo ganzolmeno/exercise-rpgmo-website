@@ -1,0 +1,47 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: stretch;
+  justify-content: center;
+
+  &>div {
+    margin: 0 30px;
+    border-radius: 3px;
+    padding: 3px 12px;
+    text-align: center;
+    text-shadow: none;
+    border: 1px solid #333;
+
+    &>span {
+      color: #afdddd;
+      font-weight: 700;
+    }
+  }
+}
+
+.currently_online {
+  display: block;
+  color: #eee;
+  background: #424242;
+}
+
+.current_xp {
+  color: #424242;
+  background-color: #ffc75f;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 1000px) {
+  .content {
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    margin: 6px 0;
+    align-items: baseline;
+
+    &>div {
+      margin: 0%;
+    }
+  }
+}
