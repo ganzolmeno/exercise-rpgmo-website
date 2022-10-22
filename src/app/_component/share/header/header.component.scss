@@ -1,0 +1,44 @@
+
+.header {
+  margin-top: 22px;
+  width: 960px;
+  min-width: unset;
+  height: 156px;
+  border: black solid 1px;
+
+  >div>div,
+  >div>div>a {
+    width: 954px;
+    height: 150px;
+  }
+
+  >div>div>a {
+    position: relative;
+    top: -186px;
+    display: block;
+  }
+
+  >div>div {
+    background-color: transparent;
+    background-image: url(^assets/img/banner.jpg);
+    background-repeat: repeat-x;
+    border: black solid 2px;
+  }
+
+  >div {
+    width: 958px;
+    height: 154px;
+    border: #d9c97c solid 1px;
+  }
+
+  .deco {
+    background-color: transparent;
+    background-image: url(^assets/img/deco.png);
+    position: relative;
+    width: 290px;
+    height: 186px;
+    top: 67px;
+    left: -32px;
+  }
+
+}
