@@ -161,6 +161,13 @@
           <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="Follow Us" datatype="html">
+        <source>Follow Us</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/social-media/social-media.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="people online" datatype="html">
         <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="INTERPOLATION" equiv-text="{{lastOnline}}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> online</source>
         <context-group purpose="location">
