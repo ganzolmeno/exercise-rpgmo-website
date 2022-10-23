@@ -28,6 +28,8 @@
     "@nguniversal/express-engine": "^14.2.0",
     "express": "^4.15.2",
     "ng-gallery": "^7.1.2",
+    "ngx-plyr": "^4.0.1",
+    "plyr": "^3.7.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
