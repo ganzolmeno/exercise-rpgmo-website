@@ -17,6 +17,7 @@ import { LocalizePageComponent } from './_component/share/localize-page/localize
 import { HomeComponent } from './_component/page/home/home.component';
 import { NewsComponent } from './_component/page/news/news.component';
 import { RegisterComponent } from './_component/page/register/register.component';
+import { DownloadComponent } from './_component/page/download/download.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RegisterComponent } from './_component/page/register/register.component
     GoTopComponent,
     LocalizePageComponent,
     NewsComponent,
-    RegisterComponent
+    RegisterComponent,
+    DownloadComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -5,6 +5,7 @@ import { LocalizePageComponent } from './_component/share/localize-page/localize
 import { HomeComponent } from './_component/page/home/home.component';
 import { NewsComponent } from './_component/page/news/news.component';
 import { RegisterComponent } from './_component/page/register/register.component';
+import { DownloadComponent } from './_component/page/download/download.component';
 
 const routes: Routes = [
   {
@@ -57,7 +58,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'download', component: LocalizePageComponent,
+    path: 'download', component: DownloadComponent,
     data: {
       title: $localize`:@@Download:Download`,
       desc: $localize`:meta-description-download:Download standalone applications for Windows, Mac, Linux, Android`
