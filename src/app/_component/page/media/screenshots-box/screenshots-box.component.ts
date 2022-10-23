@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Gallery, ImageItem, GalleryItem, GalleryConfig } from 'ng-gallery';
 /*https://github.com/MurhafSousli/ngx-gallery*/
 
@@ -55,9 +56,12 @@ export class ScreenshotsBoxComponent implements OnInit {
 
   ];
 
-  constructor(private gallery: Gallery) { }
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: any,
+    private gallery: Gallery) { }
 
   ngOnInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     this.items = this.data.map(item =>
       new ImageItem({ src: item.srcUrl, thumb: item.previewUrl })
     );
