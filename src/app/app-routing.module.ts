@@ -67,7 +67,7 @@ const routes: Routes = [
   {
     path: 'forum', component: LocalizePageComponent,
     data: {
-      title: $localize`:@@Forum:Forum`,
+      title: $localize`:@@Forum:Forum`, page: 'forum',
       desc: $localize`:meta-description-forum:Join the RPG MO community.`
     }
   },
