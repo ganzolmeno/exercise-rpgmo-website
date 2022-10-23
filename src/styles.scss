@@ -1,10 +1,27 @@
 @import 'style/normalize.css';
+@import '~@angular/cdk/overlay-prebuilt.css';
 @import 'style/layout.scss';
 @import 'style/animation.css';
 @import 'style/news.scss';
 @import 'style/welcome.scss';
 @import 'style/wiki.scss';
 @import 'style/forum.scss';
+
+@font-face {
+  font-family: DKNorthumbria;
+  src: url(^assets/css/DKNorthumbria.ttf.woff) format("woff"),
+    url(^assets/css/DKNorthumbria.ttf.svg#DKNorthumbria) format("svg"),
+    url(^assets/css/DKNorthumbria.ttf.eot),
+    url(^assets/css/DKNorthumbria.ttf.eot?#iefix) format("embedded-opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+p.dropcap::first-letter {
+  font-size: 30px;
+  color: #97d1d2;
+  font-family: DKNorthumbria;
+}
 
 a {
   color: #97d1d2;
