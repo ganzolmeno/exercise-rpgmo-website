@@ -1,0 +1,38 @@
+.welcome{
+  .message_box>span {
+    color: #e1e1e1;
+    font-weight: 800
+  }
+
+  .thumbnail {
+    width: 100px;
+    height: 100px;
+  }
+
+  .story {
+    justify-content: space-between;
+  }
+
+  .story:nth-child(odd) {
+    flex-direction: row;
+  }
+
+  .story:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  .dropcap{
+    width: calc(100% - 100px);
+  }
+
+  @media screen and (max-width: 650px) {
+    .story {
+      align-items: center;
+      flex-direction: column !important;
+    }
+    .dropcap{
+      width: 100%;
+    }
+  }
+
+}
