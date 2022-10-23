@@ -36,7 +36,7 @@ const routes: Routes = [
   {
     path: 'credits', component: LocalizePageComponent,
     data: {
-      title: $localize`:@@Credits:Credits`,
+      title: $localize`:@@Credits:Credits`, page:'credits',
       desc: $localize`:meta-description-credits:People behind the making of RPG MO`
     }
   },
