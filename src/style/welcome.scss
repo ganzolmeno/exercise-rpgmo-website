@@ -11,6 +11,7 @@
 
   .story {
     justify-content: space-between;
+    align-items: center;
   }
 
   .story:nth-child(odd) {
@@ -27,7 +28,6 @@
 
   @media screen and (max-width: 650px) {
     .story {
-      align-items: center;
       flex-direction: column !important;
     }
     .dropcap{
