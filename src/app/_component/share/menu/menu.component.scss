@@ -33,7 +33,13 @@ a:hover {
   }
 }
 
-.menu .play {
+app-social-media{
+  margin: 30px 0;
+}
+
+.menu .play,
+app-social-media,
+app-status-line {
   display: none;
 }
 
@@ -45,6 +51,7 @@ a:hover {
   font-size: 1.2em;
   font-weight: 700;
   background-image: linear-gradient(180deg, rgba(203, 184, 93, 0.9), rgba(137, 100, 23, .9));
+
   &:hover {
     color: white;
     background-image: linear-gradient(180deg, rgba(137, 100, 23, .9), rgba(203, 184, 93, 0.9));
@@ -156,13 +163,12 @@ li a:hover {
   transform: scaleY(1);
 }
 
-app-status-line{
-  display: none;
-}
-
 @media screen and (max-width: 1000px) {
 
-  app-status-line{
+  app-status-line,
+  app-social-media,
+  .home,
+  app-status-line {
     display: block;
   }
 
@@ -245,24 +251,13 @@ app-status-line{
     max-width: 180px;
   }
 
-  nav>.play {
+  nav>.play,
+  .has-dropdown::after {
     display: none;
   }
 
   .hamburger {
     display: flex;
-  }
-
-  .home {
-    display: block;
-  }
-
-  app-status-line {
-    display: block;
-  }
-
-  .has-dropdown::after {
-    display: none;
   }
 
   .menu>li>div {
