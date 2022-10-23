@@ -43,7 +43,7 @@ const routes: Routes = [
   {
     path: 'register', component: LocalizePageComponent,
     data: {
-      title: $localize`:@@Register:Register`,
+      title: $localize`:@@Register:Register`, page: 'register',
       desc: $localize`:meta-description-register:Create an account and start enjoying the free MMORPG called RPG MO`
     }
   },
