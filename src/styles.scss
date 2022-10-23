@@ -18,6 +18,12 @@
   font-style: normal;
 }
 
+:root {
+  --plyr-color-main: #5c8f97;
+  --plyr-audio-controls-background: #333;
+  --plyr-audio-control-color: #fff;
+}
+
 p.dropcap::first-letter {
   font-size: 30px;
   color: #97d1d2;
