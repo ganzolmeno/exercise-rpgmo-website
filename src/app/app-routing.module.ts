@@ -1,8 +1,10 @@
-import { NewsComponent } from './_component/page/news/news.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './_component/page/home/home.component';
 import { LocalizePageComponent } from './_component/share/localize-page/localize-page.component';
+
+import { HomeComponent } from './_component/page/home/home.component';
+import { NewsComponent } from './_component/page/news/news.component';
+import { RegisterComponent } from './_component/page/register/register.component';
 
 const routes: Routes = [
   {
@@ -41,9 +43,9 @@ const routes: Routes = [
     }
   },
   {
-    path: 'register', component: LocalizePageComponent,
+    path: 'register', component: RegisterComponent,
     data: {
-      title: $localize`:@@Register:Register`, page: 'register',
+      title: $localize`:@@Register:Register`,
       desc: $localize`:meta-description-register:Create an account and start enjoying the free MMORPG called RPG MO`
     }
   },
