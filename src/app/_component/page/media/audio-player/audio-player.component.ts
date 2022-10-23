@@ -1,5 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, ViewChild, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
 import { PlyrComponent } from 'ngx-plyr';
+import * as Plyr from 'plyr';
 /*https://www.npmjs.com/package/ngx-plyr*/
 
 @Component({
@@ -7,7 +9,7 @@ import { PlyrComponent } from 'ngx-plyr';
   templateUrl: './audio-player.component.html',
   styleUrls: ['./audio-player.component.scss']
 })
-export class AudioPlayerComponent {
+export class AudioPlayerComponent implements AfterViewInit {
 
   @ViewChild(PlyrComponent) plyr?: PlyrComponent;
   player?: Plyr;
@@ -222,13 +224,18 @@ export class AudioPlayerComponent {
   audioSources: Plyr.Source[] = [];
   currentTrack = 0;
 
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: any
+  ){}
+
   audioSet(num: number, play = true) {
     this.audioSources = [
       {
         type: this.audioDatas[num].type,
         src: this.audioDatas[num].src
       }
-    ]
+    ];
+
     this.currentTrack = num;
     if (play) {
       let tmp = setInterval(_ => {
@@ -238,7 +245,7 @@ export class AudioPlayerComponent {
     }
   }
 
-  constructor() {
+  ngAfterViewInit() {
     this.audioSet(0, !1);
   }
 }

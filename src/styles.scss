@@ -24,10 +24,21 @@
   --plyr-audio-control-color: #fff;
 }
 
-p.dropcap::first-letter {
-  font-size: 30px;
-  color: #97d1d2;
-  font-family: DKNorthumbria;
+p.dropcap {
+  line-height: 24px;
+  margin-top: 0;
+  margin-right: 0;
+
+  &::first-letter {
+    font-size: 30px;
+    color: #97d1d2;
+    font-family: DKNorthumbria;
+  }
+}
+
+p,
+pre {
+  margin: 1em 0;
 }
 
 a {
@@ -122,4 +133,8 @@ li {
 
 .reflection {
   -webkit-box-reflect: below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(.5, transparent), to(rgba(255, 255, 255, .5)));
+}
+
+.reflection_news {
+  -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.5, transparent), to(rgba(255, 255, 255, 0.5)));
 }

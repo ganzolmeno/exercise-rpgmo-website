@@ -14,5 +14,6 @@
   </div>
 
   <div plyr style="width: 100%;" plyrType="audio" [plyrPlaysInline]="true" [plyrSources]="audioSources"
+  [plyrOptions]="{controls:['play','progress','current-time','duration','mute','volume']}"
     (plyrInit)="player = $event"></div>
 </div>
