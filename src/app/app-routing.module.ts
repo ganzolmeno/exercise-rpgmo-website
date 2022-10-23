@@ -50,7 +50,7 @@ const routes: Routes = [
   {
     path: 'contact', component: LocalizePageComponent,
     data: {
-      title: $localize`:@@Contact:Contact`,
+      title: $localize`:@@Contact:Contact`, page: 'contact',
       desc: $localize`:meta-description-contact:Need to contact us? This is the page to contact creators of RPG MO.`
     }
   },
