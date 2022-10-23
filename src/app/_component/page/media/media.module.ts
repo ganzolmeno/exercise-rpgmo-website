@@ -6,13 +6,15 @@ import { LightboxModule } from  'ng-gallery/lightbox';
 
 import { MediaComponent } from './media.component';
 import { ScreenshotsBoxComponent } from './screenshots-box/screenshots-box.component';
+import { MapsBoxComponent } from './maps-box/maps-box.component';
 
 
 
 @NgModule({
   declarations: [
     MediaComponent,
-    ScreenshotsBoxComponent
+    ScreenshotsBoxComponent,
+    MapsBoxComponent
   ],
   imports: [
     CommonModule,
