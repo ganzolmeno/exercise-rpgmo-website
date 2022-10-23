@@ -16,14 +16,14 @@ const routes: Routes = [
     }
   },
   {
-    path: 'media', component: LocalizePageComponent,
+    path: 'media', loadChildren: () => import('./_component/page/media/media.module').then(m => m.MediaModule),
     data: {
       title: $localize`:@@Media:Media`,
       desc: $localize`:meta-description-media:RPG MO screenshots, videos and music.`
     }
   },
   {
-    path: 'highscore', component: LocalizePageComponent,
+    path: 'highscore', loadChildren: () => import('./_component/page/highscore/highscore.module').then(m => m.HighscoreModule),
     data: {
       title: $localize`:@@Highscore:Highscore`,
       desc: $localize`:meta-description-highscore:See who are the best players in RPG MO.`
