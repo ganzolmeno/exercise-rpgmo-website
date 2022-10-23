@@ -1,0 +1,30 @@
+.wiki_page{
+  .content {
+    align-items: flex-start;
+  }
+
+  .withImg {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .withImg ul {
+    width: 350px;
+    margin-top: -6px;
+  }
+
+
+  @media screen and (max-width: 1000px) {
+    .withImg {
+      flex-direction: column;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    img,.withImg ul {
+      width: 100%;
+      max-width: unset;
+    }
+  }
+
+}

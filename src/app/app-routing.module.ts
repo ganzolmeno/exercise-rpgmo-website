@@ -36,7 +36,7 @@ const routes: Routes = [
   {
     path: 'credits', component: LocalizePageComponent,
     data: {
-      title: $localize`:@@Credits:Credits`, page:'credits',
+      title: $localize`:@@Credits:Credits`, page: 'credits',
       desc: $localize`:meta-description-credits:People behind the making of RPG MO`
     }
   },
@@ -71,7 +71,7 @@ const routes: Routes = [
   {
     path: 'wiki', component: LocalizePageComponent,
     data: {
-      title: $localize`:@@Wiki:Wiki`,
+      title: $localize`:@@Wiki:Wiki`, page: 'wiki',
       desc: $localize`:meta-description-wiki:RPG MO wiki and information`
     }
   },
@@ -106,7 +106,7 @@ const routes: Routes = [
     onSameUrlNavigation: 'reload',
     anchorScrolling: 'enabled',
     initialNavigation: 'enabledBlocking'
-})],
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
