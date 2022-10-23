@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PlyrComponent } from 'ngx-plyr';
+/*https://www.npmjs.com/package/ngx-plyr*/
 
 @Component({
   selector: 'app-audio-player',
