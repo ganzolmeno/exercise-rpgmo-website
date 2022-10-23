@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MediaComponent } from './media.component';
@@ -9,7 +10,8 @@ import { MediaComponent } from './media.component';
     MediaComponent
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule.forChild([{ path: '**', component: MediaComponent }])
+  ],
 })
 export class MediaModule { }
