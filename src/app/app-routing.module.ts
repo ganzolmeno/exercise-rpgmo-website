@@ -1,3 +1,4 @@
+import { NewsComponent } from './_component/page/news/news.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './_component/page/home/home.component';
@@ -26,7 +27,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'news', component: LocalizePageComponent,
+    path: 'news', component: NewsComponent,
     data: {
       title: $localize`:@@News:News`,
       desc: $localize`:meta-description-news:Latest news and updates to RPG MO`

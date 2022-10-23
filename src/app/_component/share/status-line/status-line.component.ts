@@ -18,12 +18,11 @@ export class StatusLineComponent implements OnInit {
     private http: HttpClient,
     @Inject(PLATFORM_ID) private platformId: any
   ) {
-    if (isPlatformBrowser(this.platformId)) {
-      this.lastOnline = localStorage['last_online'] * 1 || 30;
+    if (!isPlatformBrowser(this.platformId)) return;
+    this.lastOnline = localStorage['last_online'] * 1 || 30;
 
-      setInterval(() => { this.updatePlaying(); }, 3e4),
-        this.updatePlaying();
-    }
+    setInterval(() => { this.updatePlaying(); }, 3e4),
+      this.updatePlaying();
   }
 
   ngOnInit(): void {
@@ -40,7 +39,7 @@ export class StatusLineComponent implements OnInit {
   }
 
   private updatePlaying(): void {
-
+return; //TODO: take off
     this.pageActive && this.http.get<onlineData>("https://rpg-de.mo.ee/online.json?t=" + Math.random())
       .subscribe({
         next: (data: onlineData) => {

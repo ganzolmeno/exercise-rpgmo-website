@@ -1,0 +1,50 @@
+[
+  {
+    "title":"Halloween Patch",
+    "date":"2022-10-21",
+    "topic_id":"11465",
+    "description":"Event will last until 6th of November"
+  },
+  {
+    "title":"10th Anniversary",
+    "date":"2022-07-21",
+    "topic_id":"11415",
+    "description":"Event will last until 31st of July"
+  },
+  {
+    "title":"Easter Patch",
+    "date":"2022-04-13",
+    "topic_id":"11366",
+    "description":"Event will last until 24th of April"
+  },{
+    "title":"Valentine`s Patch",
+    "date":"2022-02-09",
+    "topic_id":"11317",
+    "description":"Event will last until 20th of February"
+  },{
+    "title":"Christmas Patch",
+    "date":"2021-12-21",
+    "topic_id":"11254",
+    "description":"Christmas event will last until 2nd of January."
+  },{
+    "title":"Black Friday Sale!",
+    "date":"2021-11-25",
+    "topic_id":"11236",
+    "description":"Black Friday sale until Sunday. MOS store prices <span class='discount'>-25%</span>"
+  },{
+    "title":"Halloween Patch",
+    "date":"2021-10-23",
+    "topic_id":"11182",
+    "description":"Event will last until 3rd of November"
+  },{
+    "title":"Back to School Sale!",
+    "date":"2021-08-22",
+    "topic_id":"11146",
+    "description":"MOS store items <span class='discount'>-25%</span> until the end of month"
+  },{
+    "title":"9th Anniversary",
+    "date":"2021-07-20",
+    "topic_id":"11105",
+    "description":"Event will last until 28th of July"
+  }
+]

@@ -1,0 +1,16 @@
+.news {
+  display: flex;
+  gap: 45px;
+  flex-direction: column;
+
+  .box_author {
+    position: absolute;
+    top: -22px;
+    right: 0;
+  }
+
+  .box_content {
+    margin-top: 18px;
+  }
+
+}
