@@ -3,24 +3,36 @@
     "title":"Halloween Patch",
     "date":"2022-10-21",
     "topic_id":"11465",
-    "description":"Event will last until 6th of November"
+    "description":"MOS store items <span class='discount'>-20%</span>, Event will last until 6th of November"
+  },
+  {
+    "title":"Back to School Sale!",
+    "date":"2022-10-21",
+    "topic_id":"11440",
+    "description":"MOS store items <span class='discount'>-25%</span> until the end of month"
   },
   {
     "title":"10th Anniversary",
     "date":"2022-07-21",
     "topic_id":"11415",
-    "description":"Event will last until 31st of July"
+    "description":"MOS store items <span class='discount'>-20%</span>, Event will last until 31st of July"
+  },
+  {
+    "title":"Summer Sale!",
+    "date":"2022-07-21",
+    "topic_id":"11404",
+    "description":"MOS store items <span class='discount'>-30%</span> until 7th of July"
   },
   {
     "title":"Easter Patch",
     "date":"2022-04-13",
     "topic_id":"11366",
-    "description":"Event will last until 24th of April"
+    "description":"MOS store items <span class='discount'>-20%</span>, Event will last until 24th of April"
   },{
     "title":"Valentine`s Patch",
     "date":"2022-02-09",
     "topic_id":"11317",
-    "description":"Event will last until 20th of February"
+    "description":"MOS store items <span class='discount'>-20%</span>, Event will last until 20th of February"
   },{
     "title":"Christmas Patch",
     "date":"2021-12-21",

@@ -9,7 +9,7 @@ import { tenMinuteCache } from 'src/lib/helper';
 })
 export class NewsComponent implements AfterViewInit {
 
-  readonly forums_url = 'https://forums.mo.ee/viewtopic.php?f=14&t=';
+  readonly forums_url = 'https://forums.mo.ee/viewtopic.php?t=';
 
   @ViewChild("content") content!: ElementRef;
 
