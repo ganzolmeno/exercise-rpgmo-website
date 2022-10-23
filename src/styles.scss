@@ -72,7 +72,7 @@ a {
   color: #fdf3a8;
 }
 
-.center{
+.center {
   text-align: center;
 }
 
@@ -81,13 +81,17 @@ img {
   border: 0;
 }
 
-b{
+b {
   border-radius: 3px;
   background: #222;
   font-weight: 500;
   padding: 2px 6px;
 }
 
-li{
+li {
   margin-top: 6px;
+}
+
+.reflection {
+  -webkit-box-reflect: below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(.5, transparent), to(rgba(255, 255, 255, .5)));
 }

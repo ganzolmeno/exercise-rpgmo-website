@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: 'play', component: LocalizePageComponent,
     data: {
-      title: $localize`:@@Play:Play`,
+      title: $localize`:@@Play:Play`, page: 'play',
       desc: $localize`:meta-description-play:Play RPG MO for free and join the awesome community.`
     }
   },
