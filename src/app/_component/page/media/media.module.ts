@@ -7,6 +7,7 @@ import { LightboxModule } from  'ng-gallery/lightbox';
 import { MediaComponent } from './media.component';
 import { ScreenshotsBoxComponent } from './screenshots-box/screenshots-box.component';
 import { MapsBoxComponent } from './maps-box/maps-box.component';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
 
 
 
@@ -14,7 +15,8 @@ import { MapsBoxComponent } from './maps-box/maps-box.component';
   declarations: [
     MediaComponent,
     ScreenshotsBoxComponent,
-    MapsBoxComponent
+    MapsBoxComponent,
+    AudioPlayerComponent
   ],
   imports: [
     CommonModule,
