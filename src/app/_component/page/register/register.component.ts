@@ -1,6 +1,6 @@
-import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, ElementRef, HostListener, Inject, LOCALE_ID, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, LOCALE_ID, PLATFORM_ID, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -27,7 +27,8 @@ export class RegisterComponent implements AfterViewInit {
       next: data => {
         this.content.nativeElement.innerHTML = data;
         this.route.fragment.subscribe((fragment) => {
-          document.getElementById(fragment!)!.scrollIntoView({ behavior: "smooth" });
+          if (fragment)
+            document.getElementById(fragment!)!.scrollIntoView({ behavior: "smooth" });
         });
       },
       error: _ => this.router.navigate([''])
