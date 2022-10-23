@@ -1,0 +1,17 @@
+#btn_list {
+  display: flex;
+  flex-direction: column;
+}
+#hs_dropdown{
+  display: none;
+}
+@media screen and (max-width: 1000px) {
+  #hs_dropdown {
+    display: block;
+  }
+
+  #btn_list {
+    display: none;
+  }
+
+}

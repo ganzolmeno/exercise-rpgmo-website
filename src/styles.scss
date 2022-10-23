@@ -7,6 +7,7 @@
 @import 'style/welcome.scss';
 @import 'style/wiki.scss';
 @import 'style/forum.scss';
+@import 'style/highscore.scss';
 
 @font-face {
   font-family: DKNorthumbria;
@@ -138,4 +139,14 @@ li {
 
 .reflection_news {
   -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.5, transparent), to(rgba(255, 255, 255, 0.5)));
+}
+
+select {
+  box-shadow: 0 0 2px #141414 inset;
+  background: #424242;
+  color: #fff;
+  padding: 10px;
+  border: 1px solid #333;
+  text-shadow: 1px 1px #000000;
+  margin-right: 6px;
 }

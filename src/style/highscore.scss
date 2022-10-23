@@ -1,0 +1,17 @@
+.skill {
+  background: #424242;
+  padding: 6px;
+  border: 1px solid #333;
+  box-shadow: 0 0 2px #141414 inset;
+  width: 90px;
+  margin-top: 2px;
+  line-height: 20px;
+  position: relative;
+  cursor: pointer;
+  transition: .3s;
+
+  &:hover {
+    background: #436c72;
+    scale: 1.05;
+  }
+}

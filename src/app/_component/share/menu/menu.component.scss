@@ -131,7 +131,7 @@ li {
   border-radius: unset;
 }
 
-li:hover>a,
+li:hover>div,li:hover>a,
 li a:hover {
   background: rgba(0, 0, 0, .4);
 }
@@ -180,6 +180,10 @@ li a:hover {
     left: 0;
     top: 0;
     width: calc(100% - 2px);
+  }
+
+  li:hover>div{
+    background: rgba(0,0,0,.2);
   }
 
   ul.menu {
