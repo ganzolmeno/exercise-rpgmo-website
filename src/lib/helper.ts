@@ -12,3 +12,9 @@ export function namifyHighscore(name:string){
 }
 
 export function capitaliseFirstLetter(t:string){return t.charAt(0).toUpperCase()+t.slice(1)}
+
+export function isNumber(a: any): Boolean {
+  if (isNaN(a))
+    return false;
+  return a.toString().match(/^[+]{0,1}(\d+)$/);
+}

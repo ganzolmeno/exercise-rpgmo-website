@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Location } from '@angular/common';
+import { isNumber } from 'src/lib/helper';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,15 @@ export class HighscoreService {
   readonly highscore_url = 'https://rpg-de2.mo.ee/';
   readonly charjs_url = 'https://data.mo.ee/';
 
-  selectedOption:string = '';
+
+  requestState: REQUEST_STATE = REQUEST_STATE.NONE;
+
+  selectedOption: string = '';
+  playerScores: any = {};
+  outputData: any = {};
+
+  optionNodeTree: any = {};
+  readonly nodeGeneric = { 'ΦΦtype': 'option', 'ΦΦdefault': 'page', 'ΦΦnext': !0, 'page': { 'ΦΦdefault': 0, 'ΦΦtype': 'number' }, 'rank': { 'ΦΦdefault': 0, 'ΦΦtype': 'number' } };
 
   skills = [
     "total",
@@ -48,8 +58,97 @@ export class HighscoreService {
     "battle_royale"
   ];
 
-  constructor() { }
+  brMode = 's';
+  brStat = 'w';
+
+  constructor(private location: Location) {
+    this.optionNodeTree['ΦΦtype'] = 'option';
+    this.optionNodeTree['ΦΦnext'] = !0;
+    this.skills.forEach(v => {
+      this.optionNodeTree[v] = this.nodeGeneric;
+    });
+    this.optionNodeTree["battle_royale"] = {
+      'ΦΦtype': 'option', 'ΦΦdefault': 'br_s_w', 'ΦΦnext': !0,
+      'br_s_w': this.nodeGeneric,
+      'br_s_k': this.nodeGeneric,
+      'br_s_p': this.nodeGeneric,
+      'br_s_d': this.nodeGeneric,
+      'br_d_w': this.nodeGeneric,
+      'br_d_k': this.nodeGeneric,
+      'br_d_p': this.nodeGeneric,
+      'br_d_d': this.nodeGeneric,
+      'br_t_w': this.nodeGeneric,
+      'br_t_k': this.nodeGeneric,
+      'br_t_p': this.nodeGeneric,
+      'br_t_d': this.nodeGeneric,
+    }
+    this.optionNodeTree["player"] = { 'ΦΦtype': 'name' }
+    this.optionNodeTree["compare"] = { 'ΦΦtype': 'array' }
+  }
+
+  init() {
+    this.outputData = {};
+  }
+
+  parseUrl(arr: any[], isRelpace = !1): void {
+    if (arr.length == 0) { this.init(); return };
+    let tmp = this.optionNodeTree;
+    let i = 0;
+    let next = !0;
+    let checked: any[] = [];
+
+    while (next) {
+      let type = tmp['ΦΦtype'];
+      next = tmp['ΦΦnext'];
+
+      if (type == 'number' && isNumber(arr[i])) {
+        checked.push(parseInt(arr[i]));
+      } else if (type == 'option' && tmp[arr[i]]) {
+        checked.push(arr[i]);
+      } else if (type == 'name' && arr.length > 1) {
+        arr[i] = arr[i].usernamify();
+        arr[i] != '' ? checked.push(arr[i]) : 0;
+
+        if (arr[i + 1]) {
+          arr[i + 1] = arr[i + 1].usernamify();
+          arr[i + 1] != '' && arr[i + 1] != arr[i] ? checked.push(arr[i + 1]) : 0;
+        }
+      } else if (tmp['ΦΦdefault'] != undefined) {
+        arr[i] = tmp['ΦΦdefault'];
+        checked.push(tmp['ΦΦdefault']);
+      } else {
+        checked = [];
+        next = !1;
+      }
+      i++;
+      if (next) {
+        let p = checked[checked.length - 1];
+        tmp = tmp[p == 'rank' ? 'page' : p];
+      }
+    }
+
+    this.setUrl(checked, isRelpace);
+    this.requestData(checked);
+  }
+
+  setUrl(arr: any[], isRelpace = !1): void {
+    if (!arr.length) {
+      this.init();
+    }
+    let url = '/highscore';
+    arr.forEach(v => { url += '/' + encodeURIComponent(v); })
+    isRelpace ? this.location.replaceState(url) : this.location.go(url);
+  }
+
+  requestData(arr: any[]) {
+    // output data
+  }
 }
+
+export enum REQUEST_STATE {
+  NONE, LOADING, COMPELETE
+}
+
 /**
 * 'o' : origin,
 * 't' : translate

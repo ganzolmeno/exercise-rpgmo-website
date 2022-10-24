@@ -14,9 +14,20 @@ export class BtnMenuComponent implements AfterViewInit {
     public highscoreService: HighscoreService
   ) { }
 
-  displaySkill(s: any, a: any) {
-    console.log(s, a)
+  displaySkill(skill: string, page: number) {
+    this.removeElementsActive();
+    document.getElementById(`skill_${skill}`)?.classList.add('active');
+    let arr = [skill, 'page', page];
+    if (skill == "battle_royale") {
+      arr = [skill, `br_${this.highscoreService.brMode}_${this.highscoreService.brStat}`, 'page', page];
+    }
+    this.highscoreService.parseUrl(arr);
+  }
 
+  removeElementsActive(): void {
+    this.highscoreService.skills.forEach(v => {
+      document.getElementById(`skill_${v}`)?.classList.remove('active');
+    })
   }
 
   ngAfterViewInit(): void {
@@ -33,6 +44,10 @@ export class BtnMenuComponent implements AfterViewInit {
       btn.addEventListener('click', ()=>{this.displaySkill(skill.o,0)});
       document.getElementById('btn_list')!.appendChild(btn);
     });
+
+    this.highscoreService.challenges.forEach(v => {
+      document.getElementById('skill_' + v)?.classList.add("challenge");
+    })
   }
 
 }

@@ -10,8 +10,17 @@
   cursor: pointer;
   transition: .3s;
 
+  &.challenge{
+    background: #344c68;
+  }
+
   &:hover {
     background: #436c72;
+    scale: 1.05;
+  }
+
+  &.active{
+    background: #333;
     scale: 1.05;
   }
 }

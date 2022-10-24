@@ -1,17 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { HighscoreService } from './highscore.service';
 
 @Component({
   selector: 'app-highscore',
   templateUrl: './highscore.component.html',
   styleUrls: ['./highscore.component.scss']
 })
-export class HighscoreComponent implements OnInit {
+export class HighscoreComponent implements OnInit, OnDestroy {
 
-  constructor(private route: ActivatedRoute) { }
+  navigationSubscription?: Subscription;
+
+  constructor(private route: ActivatedRoute, public highscoreService: HighscoreService, private router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.url)
+    this.navigationSubscription = this.router.events.subscribe((event: any) => {
+      if (event instanceof NavigationEnd) {
+        this.parseUrl();
+      }
+    });
+    this.parseUrl();
+  }
+
+  parseUrl(): void {
+    let result: any[] = [];
+    this.route.snapshot.url.forEach(v => {
+      result.push(decodeURI(v.path.toLocaleLowerCase()));
+    });
+    this.highscoreService.parseUrl(result, !0);
+  }
+
+  ngOnDestroy() {
+    this.navigationSubscription?.unsubscribe();
   }
 
 }
