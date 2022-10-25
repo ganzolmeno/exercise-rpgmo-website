@@ -167,6 +167,11 @@ li a:hover {
 
 @media screen and (max-width: 1000px) {
 
+  .menu>li:hover>.has-dropdown+.submenu,
+  .submenu>li:hover>.has-dropdown+.submenu {
+    animation: unset;
+  }
+
   app-status-line,
   app-social-media,
   .home,

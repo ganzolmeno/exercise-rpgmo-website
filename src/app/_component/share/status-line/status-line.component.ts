@@ -1,59 +1,42 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, OnInit, HostListener, Inject, PLATFORM_ID } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, AfterViewInit, Inject, PLATFORM_ID, ViewChild, ElementRef } from '@angular/core';
+import { StatusLineService } from './status-line.service';
 
 @Component({
   selector: 'app-status-line',
   templateUrl: './status-line.component.html',
   styleUrls: ['./status-line.component.scss'],
 })
-export class StatusLineComponent implements OnInit {
+export class StatusLineComponent implements AfterViewInit {
 
+  @ViewChild("xp") xp!: ElementRef;
   lastOnline: number = 30;
-  isDoubleXp = !0;
-  private pageActive = !0;
-  private blurTime = new Date().valueOf();
 
   constructor(
-    private http: HttpClient,
-    @Inject(PLATFORM_ID) private platformId: any
-  ) {
+    @Inject(PLATFORM_ID) private platformId: any,
+    private statusLineService: StatusLineService
+  ) { }
+
+  ngAfterViewInit() {
     if (!isPlatformBrowser(this.platformId)) return;
-    this.lastOnline = localStorage['last_online'] * 1 || 30;
+    this.statusLineService.lastOnline.subscribe(num => {
+      this.animatePlaying(this.lastOnline, num);
+    })
 
-    setInterval(() => { this.updatePlaying(); }, 3e4),
-      this.updatePlaying();
+    this.statusLineService.isDoubleXp.subscribe(bool => {
+      this.animate2x(bool);
+    })
+
   }
 
-  ngOnInit(): void {
-
-  }
-
-  @HostListener('window:focus', ['$event']) onFocused(event: any) {
-    this.pageActive = !0;
-    new Date().valueOf() - this.blurTime > 5e4 && this.updatePlaying();
-  }
-  @HostListener('window:blur', ['$event']) onBlur(event: any) {
-    this.pageActive = !1;
-    this.blurTime = new Date().valueOf();
-  }
-
-  private updatePlaying(): void {
-return; //TODO: take off
-    this.pageActive && this.http.get<onlineData>("https://rpg-de.mo.ee/online.json?t=" + Math.random())
-      .subscribe({
-        next: (data: onlineData) => {
-          this.animatePlaying(this.lastOnline, data.online),
-            this.lastOnline = data.online;
-          localStorage['last_online'] = data.online;
-          this.isDoubleXp = data.xp == 2;
-        },
-        error: err => {
-          this.lastOnline = 30;
-          localStorage['last_online'] = this.lastOnline;
-          this.isDoubleXp = !1;
-        }
-      });
+  private animate2x(bool: boolean) {
+    if (bool) {
+      this.xp.nativeElement.hidden = false;
+      this.xp.nativeElement.classList = 'current_xp xp_display';
+    } else {
+      this.xp.nativeElement.classList = 'current_xp xp_hidden';
+      setTimeout(_ => { this.xp.nativeElement.hidden = true; }, 200);
+    }
   }
 
   private animatePlaying(start: number, end: number) {
@@ -72,9 +55,4 @@ return; //TODO: take off
       }
     }, stepTime);
   }
-}
-
-export interface onlineData {
-  online: number,
-  xp: number
 }
