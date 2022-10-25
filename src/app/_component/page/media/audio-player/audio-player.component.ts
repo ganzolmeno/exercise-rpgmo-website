@@ -1,6 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, ViewChild, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
-import { PlyrComponent } from 'ngx-plyr';
+import { Component, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
 import * as Plyr from 'plyr';
 /*https://www.npmjs.com/package/ngx-plyr*/
 
@@ -11,7 +10,6 @@ import * as Plyr from 'plyr';
 })
 export class AudioPlayerComponent implements AfterViewInit {
 
-  @ViewChild(PlyrComponent) plyr?: PlyrComponent;
   player?: Plyr;
 
   readonly audioDatas: AudioData[] = [
@@ -221,32 +219,31 @@ export class AudioPlayerComponent implements AfterViewInit {
     }
   ];
 
-  audioSources: Plyr.Source[] = [];
   currentTrack = 0;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any
-  ){}
+  ) { }
 
-  audioSet(num: number, play = true) {
-    this.audioSources = [
-      {
-        type: this.audioDatas[num].type,
-        src: this.audioDatas[num].src
-      }
-    ];
-
-    this.currentTrack = num;
-    if (play) {
-      let tmp = setInterval(_ => {
-        this.player?.play();
-        this.player?.playing ? clearInterval(tmp) : 0;
-      }, 500)
-    }
-  }
 
   ngAfterViewInit() {
+    if (!isPlatformBrowser(this.platformId)) return;
+    this.player! = new Plyr('#player', {
+      controls: ['play', 'progress', 'current-time', 'duration', 'mute', 'volume']
+    });
+
     this.audioSet(0, !1);
+  }
+
+  audioSet(num: number, play = true) {
+    this.player!.source = {
+      type: 'audio',
+      sources: [{ src: this.audioDatas[num].src }],
+      title: this.audioDatas[num].title
+    };
+    this.currentTrack = this.player!.currentTrack = num;
+    if (play)
+      this.player!.once('canplay', _ => this.player!.play())
   }
 }
 
