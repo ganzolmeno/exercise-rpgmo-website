@@ -33,7 +33,7 @@ a:hover {
   }
 }
 
-app-social-media{
+app-social-media {
   margin: 30px 0;
 }
 
@@ -131,7 +131,8 @@ li {
   border-radius: unset;
 }
 
-li:hover>div,li:hover>a,
+li:hover>div,
+li:hover>a,
 li a:hover {
   background: rgba(0, 0, 0, .4);
 }
@@ -159,6 +160,7 @@ li a:hover {
 
 .menu>li:hover>.has-dropdown+.submenu,
 .submenu>li:hover>.has-dropdown+.submenu {
+  animation: slideDown .2s ease-in-out;
   opacity: 1;
   transform: scaleY(1);
 }
@@ -182,8 +184,8 @@ li a:hover {
     width: calc(100% - 2px);
   }
 
-  li:hover>div{
-    background: rgba(0,0,0,.2);
+  li:hover>div {
+    background: rgba(0, 0, 0, .2);
   }
 
   ul.menu {
