@@ -31,23 +31,23 @@ export class BtnMenuComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+
+    let stop_at_challenge = this.highscoreService.challenges[0];
+
     if (!isPlatformBrowser(this.platformId)) return;
 
-    SKILL_LIST.forEach((skill, idx) => {
-      let elm = `<option value="${skill.o}">${skill.t}</option>`;
-      document.getElementById('hs_dropdown')!.innerHTML += elm;
-
+    let is_challenge = !1;
+    for (let i = 0; i < SKILL_LIST.length; i++) {
+      let skill = SKILL_LIST[i];
+      is_challenge = is_challenge || stop_at_challenge == skill.o;
       let btn = document.createElement('div');
       btn.classList.add('skill');
+      is_challenge ? btn.classList.add('challenge') : 0;
       btn.id = 'skill_' + skill.o;
-      btn.innerText = skill.t;
-      btn.addEventListener('click', ()=>{this.displaySkill(skill.o,0)});
-      document.getElementById('btn_list')!.appendChild(btn);
-    });
-
-    this.highscoreService.challenges.forEach(v => {
-      document.getElementById('skill_' + v)?.classList.add("challenge");
-    })
+      btn.innerHTML = `<div class='skill_icon' style="background-position-x: ${-24 * i}px"></div>`+skill.t;
+      btn.addEventListener('click', () => { this.displaySkill(skill.o, 0) });
+      document.getElementById(is_challenge ? 'challenges_panel' : 'skills_panel')!.appendChild(btn);
+    }
   }
 
 }

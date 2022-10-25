@@ -1,4 +1,15 @@
-<select id="hs_dropdown" [(ngModel)]="highscoreService.selectedOption" (change)="displaySkill(highscoreService.selectedOption,0)">
-  <option value="" i18n>-- Select --</option>
-</select>
-<div id="btn_list"></div>
+<div class="menu">
+  <div class="select expand" i18n>Expand</div>
+  <div class="panel_layout">
+    <h4 i18n="@@Skills">Skills</h4>
+    <div class='panel'  id="skills_panel"></div>
+    <h4 i18n="@@Challenges">Challenges</h4>
+    <div class='panel' id="challenges_panel"></div>
+    <h4 i18n>Compare / filter players</h4>
+    <div id="player_panel">
+      <input>
+      <input>
+      <button class="skill" i18n>Filter</button>
+    </div>
+  </div>
+</div>
