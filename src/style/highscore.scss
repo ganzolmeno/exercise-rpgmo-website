@@ -1,4 +1,16 @@
 .hs_container {
+  .hs_menu {
+    padding-bottom: 20px;
+
+    &.close .panel_layout {
+      display: none;
+    }
+
+    &:hover .panel_layout {
+      display: block;
+    }
+  }
+
   .skill {
     background: #333;
     color: #fff;
@@ -32,10 +44,10 @@
     }
 
     &.active {
-      background: #424242;
+      background: #ffc75f;
+      color: #000;
+      text-shadow: 1px 1px #aaa;
       scale: 1.05;
-      box-shadow: 0 0 5px #777 inset;
-      z-index: 2;
     }
 
   }

@@ -5,11 +5,14 @@ import { FormsModule } from '@angular/forms';
 
 import { HighscoreComponent } from './highscore.component';
 import { BtnMenuComponent } from './btn-menu/btn-menu.component';
+import { DataContainerComponent } from './data-container/data-container.component';
+import 'src/lib/string-prototypes';
 
 @NgModule({
   declarations: [
     HighscoreComponent,
-    BtnMenuComponent
+    BtnMenuComponent,
+    DataContainerComponent
   ],
   imports: [
     CommonModule,

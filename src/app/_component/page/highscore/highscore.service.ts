@@ -1,3 +1,4 @@
+import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Location } from '@angular/common';
@@ -12,7 +13,7 @@ export class HighscoreService {
   readonly charjs_url = 'https://data.mo.ee/';
 
 
-  requestState: REQUEST_STATE = REQUEST_STATE.NONE;
+  requestState:BehaviorSubject<number> = new BehaviorSubject(REQUEST_STATE.NONE);
 
   selectedOption: string = '';
   playerScores: any = {};
@@ -87,7 +88,6 @@ export class HighscoreService {
       'br_t_d': this.nodeGeneric,
     };
     this.optionNodeTree["player"] = { 'ΦΦtype': 'name' };
-    this.optionNodeTree["compare"] = { 'ΦΦtype': 'array' };
     this.skills.push('battle_royale');
     console.log(this.optionNodeTree)
   }

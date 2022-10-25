@@ -1,15 +1,23 @@
-<div class="menu">
+<div class="hs_menu">
+
   <div class="select expand" i18n>Expand</div>
+
   <div class="panel_layout">
+
     <h4 i18n="@@Skills">Skills</h4>
-    <div class='panel'  id="skills_panel"></div>
+    <div class='panel' id="skills_panel"></div>
+
     <h4 i18n="@@Challenges">Challenges</h4>
     <div class='panel' id="challenges_panel"></div>
+
     <h4 i18n>Compare / filter players</h4>
     <div id="player_panel">
-      <input>
-      <input>
-      <button class="skill" i18n>Filter</button>
+      <input type="text" id="filter_player1" placeholder="Player name" i18n-placeholder="@@Player name"
+        (keypress)="displayPlayer($event,$event.keyCode);">
+      <input type="text" id="filter_player2" placeholder="Player name" i18n-placeholder="@@Player name"
+        (keypress)="displayPlayer($event,$event.keyCode);">
+      <button class="skill" (click)="displayPlayer($event,13);" i18n="@@Filter">Filter</button>
     </div>
+
   </div>
 </div>
