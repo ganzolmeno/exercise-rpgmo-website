@@ -12,7 +12,11 @@ export class HighscoreComponent implements OnInit, OnDestroy {
 
   navigationSubscription?: Subscription;
 
-  constructor(private route: ActivatedRoute, public highscoreService: HighscoreService, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    public highscoreService: HighscoreService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.navigationSubscription = this.router.events.subscribe((event: any) => {

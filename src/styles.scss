@@ -95,7 +95,7 @@ a {
   font-size: 18px;
   line-height: 24px;
   padding: 0 4px;
-  border-radius: 1px;
+  border-radius: 3px;
   text-shadow: none;
   margin: 0 6px;
 }
@@ -121,12 +121,13 @@ img {
   border: 0;
 }
 
-b {
+.stress {
   border-radius: 3px;
   background: #222;
   font-weight: 500;
   padding: 2px 6px;
   white-space: nowrap;
+  display: inline-block;
 }
 
 li {
@@ -149,4 +150,23 @@ select {
   border: 1px solid #333;
   text-shadow: 1px 1px #000000;
   margin-right: 6px;
+}
+
+.click2play {
+
+  transition: .2s;
+
+  a {
+    font-size: large;
+    font-weight: bold;
+    background: #ffc75f;
+    color: #000;
+    text-shadow: none;
+    font-weight: 700;
+    box-shadow: 0 0 0 1px #000 inset;
+  }
+
+  &:hover {
+    scale: 1.1;
+  }
 }

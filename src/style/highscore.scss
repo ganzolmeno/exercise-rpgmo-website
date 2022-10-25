@@ -10,7 +10,7 @@
   cursor: pointer;
   transition: .3s;
 
-  &.challenge{
+  &.challenge {
     background: #344c68;
   }
 
@@ -19,8 +19,10 @@
     scale: 1.05;
   }
 
-  &.active{
+  &.active {
     background: #333;
     scale: 1.05;
+    box-shadow: 0 0 5px #fff;
+    z-index: 2;
   }
 }

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Location } from '@angular/common';
 import { isNumber } from 'src/lib/helper';
@@ -15,7 +16,10 @@ export class HighscoreService {
 
   selectedOption: string = '';
   playerScores: any = {};
-  outputData: any = {};
+  outputData: any[] = [];
+
+  brMode = 's';
+  brStat = 'w';
 
   optionNodeTree: any = {};
   readonly nodeGeneric = { 'ΦΦtype': 'option', 'ΦΦdefault': 'page', 'ΦΦnext': !0, 'page': { 'ΦΦdefault': 0, 'ΦΦtype': 'number' }, 'rank': { 'ΦΦdefault': 0, 'ΦΦtype': 'number' } };
@@ -58,10 +62,10 @@ export class HighscoreService {
     "battle_royale"
   ];
 
-  brMode = 's';
-  brStat = 'w';
-
-  constructor(private location: Location) {
+  constructor(
+    private location: Location,
+    private http:HttpClient
+    ) {
     this.optionNodeTree['ΦΦtype'] = 'option';
     this.optionNodeTree['ΦΦnext'] = !0;
     this.skills.forEach(v => {
@@ -81,13 +85,16 @@ export class HighscoreService {
       'br_t_k': this.nodeGeneric,
       'br_t_p': this.nodeGeneric,
       'br_t_d': this.nodeGeneric,
-    }
-    this.optionNodeTree["player"] = { 'ΦΦtype': 'name' }
-    this.optionNodeTree["compare"] = { 'ΦΦtype': 'array' }
+    };
+    this.optionNodeTree["player"] = { 'ΦΦtype': 'name' };
+    this.optionNodeTree["compare"] = { 'ΦΦtype': 'array' };
+    this.skills.push('battle_royale');
+    console.log(this.optionNodeTree)
   }
 
   init() {
-    this.outputData = {};
+    this.outputData = [];
+    this.selectedOption = '';
   }
 
   parseUrl(arr: any[], isRelpace = !1): void {
@@ -141,12 +148,12 @@ export class HighscoreService {
   }
 
   requestData(arr: any[]) {
-    // output data
+    // output data this.http.get
   }
 }
 
 export enum REQUEST_STATE {
-  NONE, LOADING, COMPELETE
+  NONE, LOADING, COMPELETE, ERROR
 }
 
 /**
