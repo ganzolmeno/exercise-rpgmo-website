@@ -35,13 +35,16 @@ export class BtnMenuComponent implements AfterViewInit, OnDestroy {
       this.highscoreService.requestState.next(1)
 
     }
-    this.removeElementsActive();
-    document.getElementById(`skill_${skill}`)?.classList.add('active');
     let arr = [skill, 'page', page];
     if (skill == "battle_royale") {
       arr = [skill, `br_${this.highscoreService.brMode}_${this.highscoreService.brStat}`, 'page', page];
     }
     this.highscoreService.parseUrl(arr);
+  }
+
+  elementActive(skill: string) {
+    this.removeElementsActive();
+    document.getElementById(`skill_${skill}`)?.classList.add('active');
   }
 
   removeElementsActive(): void {
@@ -74,13 +77,19 @@ export class BtnMenuComponent implements AfterViewInit, OnDestroy {
         case REQUEST_STATE.LOADING:
           document.querySelector('.hs_menu')!.classList.add('hidden');
           break;
-        case REQUEST_STATE.ERROR || REQUEST_STATE.COMPELETE:
+        case REQUEST_STATE.ERROR:
           document.querySelector('.hs_menu')!.classList.remove('hidden');
           document.querySelector('.hs_menu')!.classList.add('close');
+          break;
+        case REQUEST_STATE.COMPELETE:
+          document.querySelector('.hs_menu')!.classList.remove('hidden');
+          document.querySelector('.hs_menu')!.classList.add('close');
+          this.elementActive(this.highscoreService.snapShot[0])
           break;
         default:
           document.querySelector('.hs_menu')!.classList.remove('close');
           document.querySelector('.hs_menu')!.classList.remove('hidden');
+          this.removeElementsActive();
           break;
       }
     });
