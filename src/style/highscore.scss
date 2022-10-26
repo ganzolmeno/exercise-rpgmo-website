@@ -125,7 +125,12 @@
   .name {
     color: #97d1d2;
     font-weight: 700;
-    font-size: 1.2em;
+  }
+
+  .field_name td {
+    color: #fff;
+    font-weight: 700;
+    background-color: #436c72;
   }
 
   td {
@@ -187,7 +192,7 @@
     }
 
   }
-
+  &.table_skill tbody,
   &.single tbody {
 
     td:nth-child(1),

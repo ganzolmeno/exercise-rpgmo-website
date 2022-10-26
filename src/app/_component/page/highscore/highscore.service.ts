@@ -176,30 +176,8 @@ export class HighscoreService {
         fin[1] = Math.floor((arr[i + 1] - 1) / 500);
       }
     }
-    /* let url = '';
+    await delay(300);
 
-     if (arr[0] == 'player') {
-       url = this.highscore_url + "playerskills?n=" + encodeURIComponent(fin[1]) + "&t=" + tenMinuteCache();
-     } else {
-       url = this.highscore_url + "highscores?b=" + fin[0] + "&p=" + fin[1] + "&t=" + tenMinuteCache();
-     }*/
-
-    //['Level' , 'XP (Millions)', 'Points']
-
-    /*this.selectedOption_text = $localize`:@@Level:Level`;
-    if (this.selectedOption == "total_xp") {
-      this.selectedOption_text = $localize`:@@XP (Millions):XP (Millions)`;
-    }
-    else if (["party", "scavenger_hunt", "skill_quest", "kill_quest", "battle_royale"].indexOf(this.selectedOption) != -1 || /br_/.test(this.selectedOption)) {
-      this.selectedOption_text = $localize`:@@Points:Points`;
-    }*/
-
-    await delay(500);
-
-    /*
-        i = arr[0] == 'battle_royale' ? 2 : 1;
-        this.rank = arr[0] != 'player' && arr[i] == "rank" ? arr[i + 1] : -1;
-    */
     if (this.snapShot[0] == 'player') {
       fin.shift();
       this.getPlayerData(fin);
@@ -218,6 +196,10 @@ export class HighscoreService {
         this.loadPlayer(names, i);
       }
     }
+    let bool = true;
+    this.outputData.forEach(v => bool = bool && v);
+    if (bool)
+      this.requestState.next(REQUEST_STATE.COMPELETE);
   }
 
   loadPlayer(names: string[], idx: number) {

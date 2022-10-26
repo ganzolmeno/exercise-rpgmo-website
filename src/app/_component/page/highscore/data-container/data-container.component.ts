@@ -18,6 +18,7 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     xp: $localize`:@@XP (Millions):XP (Millions)`,
     point: $localize`:@@Points:Points`,
     rank: $localize`:@@Rank:Rank`,
+    player: $localize`:@@Player:Player`
   };
 
   requestState$!: Subscription;
@@ -64,13 +65,60 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     if (snapShot[0] == 'player') {
       this.highscoreService.snapShot.length == 3 ? this.renderCompareData() : this.renderPlayerData();
     } else {
-
+      this.renderSkill();
     }
 
   }
 
   ngOnDestroy(): void {
     this.requestState$.unsubscribe();
+  }
+
+  /* let url = '';
+
+ if (arr[0] == 'player') {
+   url = this.highscore_url + "playerskills?n=" + encodeURIComponent(fin[1]) + "&t=" + tenMinuteCache();
+ } else {
+   url = this.highscore_url + "highscores?b=" + fin[0] + "&p=" + fin[1] + "&t=" + tenMinuteCache();
+ }*/
+
+  //['Level' , 'XP (Millions)', 'Points']
+
+  /*this.selectedOption_text = $localize`:@@Level:Level`;
+  if (this.selectedOption == "total_xp") {
+    this.selectedOption_text = $localize`:@@XP (Millions):XP (Millions)`;
+  }
+  else if (["party", "scavenger_hunt", "skill_quest", "kill_quest", "battle_royale"].indexOf(this.selectedOption) != -1 || /br_/.test(this.selectedOption)) {
+    this.selectedOption_text = $localize`:@@Points:Points`;
+  }*/
+
+  renderSkill() {
+    let snapShot = this.highscoreService.snapShot;
+    let skill = snapShot[0]
+    let level_text = this.dict.level;
+    if (skill == "total_xp") {
+      level_text = this.dict.xp;
+    }
+    else if (["party", "scavenger_hunt", "skill_quest", "kill_quest", "battle_royale"].indexOf(skill) != -1 || /br_/.test(skill)) {
+      level_text = this.dict.point;
+    }
+
+    let output = `<table class='hs_table table_skill'><thead><tr class='field_name'>
+    <td colspan='2'>${this.dict.rank}</td>
+    <td>${this.dict.player}</td>
+    <td colspan='2'>${level_text}</td>
+    </tr></thead><tbody>`;
+    this.highscoreService.outputData[0].forEach((data: any) => {
+      output += `<tr><td rank='${data.position}'>${this.formatSkillLevel(data['position'],!0,skill)}</td>
+      <td>${this.colorifyNumber(data['position'],data['last_position'],!0,skill)}</td>
+      <td player='${data.player}'>${data.player}</td>
+      <td>${this.formatSkillLevel(data['score'],!1,skill)}</td>
+      <td>${this.colorifyNumber(data['score'],data['last_score'],!1,skill)}</td>
+      </tr>`;
+    });
+
+    output += `</tbody></table>`;
+    this.container!.innerHTML = output;
   }
 
   renderCompareData() {
@@ -83,7 +131,7 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
       `<table class='hs_table compare'><thead>
       <tr><td colspan='2' class='name'>${playerName1}</td>
     <td class='vs'>VS</td><td colspan='2' class='name'>${playerName2}</td></tr>
-<tr><td>${this.dict.rank}</td><td>${this.dict.point}</td><td></td>
+<tr class='field_name'><td>${this.dict.rank}</td><td>${this.dict.point}</td><td></td>
 <td>${this.dict.point}</td><td>${this.dict.rank}</td></tr>
     </thead><tbody>`;
     SKILL_LIST.forEach(val => {
@@ -107,7 +155,7 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     let playerData1 = this.highscoreService.playerScores[playerName1];
     let output = `<table class='hs_table single'
     ><thead><tr><td colspan='5' class='name'>${playerName1}</td></tr>
-    <tr><td colspan='2'>${this.dict.rank}</td><td></td><td colspan='2'>${this.dict.point}</td></tr>
+    <tr class='field_name'><td colspan='2'>${this.dict.rank}</td><td></td><td colspan='2'>${this.dict.point}</td></tr>
     </thead><tbody>`;
     SKILL_LIST.forEach(val => {
       let skill = val.o;
