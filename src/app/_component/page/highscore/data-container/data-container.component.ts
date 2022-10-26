@@ -1,8 +1,7 @@
 import { Component, AfterViewInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
-import { HighscoreService, REQUEST_STATE } from './../highscore.service';
-import { namifyHighscore } from 'src/lib/helper';
+import { HighscoreService, REQUEST_STATE, SKILL_LIST } from './../highscore.service';
 
 @Component({
   selector: 'app-data-container',
@@ -46,7 +45,7 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
           err!.innerText = this.highscoreService.outputData[0];
           break;
         case REQUEST_STATE.COMPELETE:
-          this.rederData();
+          this.renderData();
           this.container!.classList.remove('hidden');
           break;
         default:
@@ -55,14 +54,14 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  rederData() {
+  renderData() {
     let snapShot = this.highscoreService.snapShot;
     if (snapShot[0] == 'battle_royale') {
-      //rederBROption
+      //renderBROption
     }
 
     if (snapShot[0] == 'player') {
-      this.rederPlayerData()
+      this.highscoreService.snapShot.length == 3 ? this.renderCompareData() : this.renderPlayerData();
     } else {
 
     }
@@ -73,7 +72,7 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     this.requestState$.unsubscribe();
   }
 
-  rederPlayerData() {
+  renderCompareData() {
     let snapShot = this.highscoreService.snapShot;
     let isCompare = snapShot.length == 3;
     let playerName1 = snapShot[1];
@@ -88,7 +87,7 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     </tr></thead><tbody>`;
     this.highscoreService.skills.forEach(skill => {
       if (skill == 'battle_royale') return;
-      let tmp = `<td>${namifyHighscore(skill)}</td>`;
+      let tmp = `<td>${skill}</td>`;
 
       output += `<tr>
       <td>${playerData1[skill].position}</td>
@@ -103,6 +102,56 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     });
     output += `</tbody></table>`;
     this.container!.innerHTML = output;
+  }
+
+  renderPlayerData() {
+    let playerName1 = this.highscoreService.snapShot[1];
+    let playerData1 = this.highscoreService.playerScores[playerName1];
+    let output = `<table class='hs_table single'
+    ><thead><tr><td colspan='5' class='name'>${playerName1}</td></tr></thead><tbody>`;
+    SKILL_LIST.forEach(val => {
+      let skill = val.o;
+      if (skill == 'battle_royale') return;
+      let tmp = `<td>${val.t}</td>`;
+      output += `<tr>
+      <td>${playerData1[skill].position}</td>
+      <td>${this.colorifyDiff(playerData1[skill].position, playerData1[skill].last_position, !0, skill)}</td>
+      ${tmp}
+      <td>${playerData1[skill].score}</td>
+      <td>${this.colorifyDiff(playerData1[skill].score, playerData1[skill].last_score, !1, skill)}</td>
+      </tr>`
+    });
+    output += `</tbody></table>`;
+    this.container!.innerHTML = output;
+  }
+
+  colorifyDiff(current: string, last: string, is_Rank: boolean, skill: string) {
+    if (!current || !last || skill == 'scavenger_hunt') {
+      return '';
+    }
+    var green = ' class="green"';
+    var red = ' class="red"';
+    var change = Math.abs(parseInt(current) - parseInt(last));
+    if (parseInt(current) < parseInt(last)) {
+      if (is_Rank) {
+        return ' <span' + green + '>(+' + this.formatSkillLevel(change, is_Rank, skill) + ')</span>';
+      }
+      return ' <span' + red + '>(-' + this.formatSkillLevel(change, is_Rank, skill) + ')</span>';
+    } else if (parseInt(current) > parseInt(last)) {
+      if (is_Rank) {
+        return ' <span' + red + '>(-' + this.formatSkillLevel(change, is_Rank, skill) + ')</span>';
+      }
+      return ' <span' + green + '>(+' + this.formatSkillLevel(change, is_Rank, skill) + ')</span>';
+    }
+    return '';
+  }
+
+  formatSkillLevel(value: number, is_Rank: boolean, skill: string) {
+    if (!value) return '';
+    if (!is_Rank && skill == 'total_xp') {
+      return (value / 10).toFixed(1);
+    }
+    return value;
   }
 
 }
