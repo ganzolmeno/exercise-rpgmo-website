@@ -1,9 +1,9 @@
 .hs_container {
   .hs_menu {
-
+    display: inline-block;
     margin-bottom: 50px;
 
-    &.hidden .panel_layout,
+    &.hidden2 .panel_layout,
     &.close .panel_layout {
       display: none;
     }

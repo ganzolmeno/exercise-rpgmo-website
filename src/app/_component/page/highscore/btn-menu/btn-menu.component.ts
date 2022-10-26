@@ -11,6 +11,7 @@ import { SKILL_LIST, HighscoreService, REQUEST_STATE } from '../highscore.servic
 export class BtnMenuComponent implements AfterViewInit, OnDestroy {
 
   requestStateSubscription?: Subscription;
+  is_close = !1;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
@@ -53,6 +54,11 @@ export class BtnMenuComponent implements AfterViewInit, OnDestroy {
     })
   }
 
+  toggleMenu(){
+    if(!this.is_close) return;
+    document.querySelector('.hs_menu')!.classList.toggle('close')
+  }
+
   ngAfterViewInit(): void {
 
     let stop_at_challenge = this.highscoreService.challenges[0];
@@ -75,20 +81,24 @@ export class BtnMenuComponent implements AfterViewInit, OnDestroy {
     this.requestStateSubscription = this.highscoreService.requestState.subscribe(val => {
       switch (val) {
         case REQUEST_STATE.LOADING:
-          document.querySelector('.hs_menu')!.classList.add('hidden');
+          document.querySelector('.hs_menu')!.classList.add('hidden2');
+          this.is_close=!1;
           break;
         case REQUEST_STATE.ERROR:
-          document.querySelector('.hs_menu')!.classList.remove('hidden');
+          document.querySelector('.hs_menu')!.classList.remove('hidden2');
           document.querySelector('.hs_menu')!.classList.add('close');
+          this.is_close=!0;
           break;
         case REQUEST_STATE.COMPELETE:
-          document.querySelector('.hs_menu')!.classList.remove('hidden');
+          document.querySelector('.hs_menu')!.classList.remove('hidden2');
           document.querySelector('.hs_menu')!.classList.add('close');
           this.elementActive(this.highscoreService.snapShot[0])
+          this.is_close=!0;
           break;
         default:
           document.querySelector('.hs_menu')!.classList.remove('close');
-          document.querySelector('.hs_menu')!.classList.remove('hidden');
+          document.querySelector('.hs_menu')!.classList.remove('hidden2');
+          this.is_close=!1;
           this.removeElementsActive();
           break;
       }
