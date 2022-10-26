@@ -1,7 +1,7 @@
 import { Subscription } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, AfterViewInit, PLATFORM_ID, OnDestroy } from '@angular/core';
-import { SKILL_LIST, HighscoreService } from '../highscore.service';
+import { SKILL_LIST, HighscoreService, REQUEST_STATE } from '../highscore.service';
 
 @Component({
   selector: 'app-btn-menu',
@@ -29,9 +29,9 @@ export class BtnMenuComponent implements AfterViewInit, OnDestroy {
   }
 
   displaySkill(skill: string, page: number) {
-    if(this.highscoreService.requestState.getValue()){
+    if (this.highscoreService.requestState.getValue()) {
       this.highscoreService.requestState.next(0)
-    }else{
+    } else {
       this.highscoreService.requestState.next(1)
 
     }
@@ -70,11 +70,19 @@ export class BtnMenuComponent implements AfterViewInit, OnDestroy {
     }
 
     this.requestStateSubscription = this.highscoreService.requestState.subscribe(val => {
-      val ?
-        document.querySelector('.hs_menu')!.classList.add('close') :
-        document.querySelector('.hs_menu')!.classList.remove('close');
-        console.log(this.highscoreService.requestState.getValue())
-        console.log(document.querySelector('.hs_menu'))
+      switch (val) {
+        case REQUEST_STATE.LOADING:
+          document.querySelector('.hs_menu')!.classList.add('hidden');
+          break;
+        case REQUEST_STATE.ERROR || REQUEST_STATE.COMPELETE:
+          document.querySelector('.hs_menu')!.classList.remove('hidden');
+          document.querySelector('.hs_menu')!.classList.add('close');
+          break;
+        default:
+          document.querySelector('.hs_menu')!.classList.remove('close');
+          document.querySelector('.hs_menu')!.classList.remove('hidden');
+          break;
+      }
     });
   }
 

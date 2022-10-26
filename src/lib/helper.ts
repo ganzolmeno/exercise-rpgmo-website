@@ -18,3 +18,11 @@ export function isNumber(a: any): Boolean {
     return false;
   return a.toString().match(/^[+]{0,1}(\d+)$/);
 }
+
+export function delay(ms: number) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
+export function isInteger (a: any): Boolean {
+  if (isNaN(a))
+    return false;
+  return a.toString().match(/^[+]{0,1}(\d+)$/);
+}

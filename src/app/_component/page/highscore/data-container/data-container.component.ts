@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-data-container',
@@ -6,6 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./data-container.component.scss']
 })
 export class DataContainerComponent implements OnInit {
+
+  @ViewChild("container") container!: ElementRef;
+
+  readonly dict = {
+    noInTop:$localize`:@@Not in top:Not in top`,
+    level:$localize`:@@Level:Level`,
+    xp:$localize`:@@XP (Millions):XP (Millions)`,
+    point:$localize`:@@Points:Points`,
+  };
+
 
   constructor() { }
 

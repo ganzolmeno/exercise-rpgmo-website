@@ -2,11 +2,12 @@
   .hs_menu {
     padding-bottom: 20px;
 
+    &.hidden .panel_layout,
     &.close .panel_layout {
       display: none;
     }
 
-    &:hover .panel_layout {
+    &.close:hover .panel_layout {
       display: block;
     }
   }
