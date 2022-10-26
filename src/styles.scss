@@ -23,6 +23,8 @@
   --plyr-color-main: #5c8f97;
   --plyr-audio-controls-background: #333;
   --plyr-audio-control-color: #fff;
+  --hiscore-red: #ff6c6c;
+  --hiscore-green: #64af64;
 }
 
 p.dropcap {
@@ -177,9 +179,9 @@ select,
 }
 
 .red {
-  color: #ff6c6c;
+  color: var(--hiscore-red);
 }
 
 .green {
-  color: #64af64;
+  color: var(--hiscore-green);
 }

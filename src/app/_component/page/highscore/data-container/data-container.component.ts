@@ -17,6 +17,7 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     level: $localize`:@@Level:Level`,
     xp: $localize`:@@XP (Millions):XP (Millions)`,
     point: $localize`:@@Points:Points`,
+    rank: $localize`:@@Rank:Rank`,
   };
 
   requestState$!: Subscription;
@@ -74,30 +75,27 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
 
   renderCompareData() {
     let snapShot = this.highscoreService.snapShot;
-    let isCompare = snapShot.length == 3;
     let playerName1 = snapShot[1];
     let playerData1 = this.highscoreService.playerScores[playerName1];
-    let playerName2 = isCompare ? snapShot[2] : undefined;
-    let playerData2 = isCompare ? this.highscoreService.playerScores[playerName2!] : 0;
+    let playerName2 = snapShot[2];
+    let playerData2 = this.highscoreService.playerScores[playerName2];
     let output =
-      `<table>
-    <thead><tr>
-    <td colspan='${isCompare ? 2 : 3}'>${playerName1}</td>
-    ${isCompare ? `<td></td><td colspan='2'>${playerName2}</td>` : ''}
-    </tr></thead><tbody>`;
-    this.highscoreService.skills.forEach(skill => {
+      `<table class='hs_table compare'><thead>
+      <tr><td colspan='2' class='name'>${playerName1}</td>
+    <td class='vs'>VS</td><td colspan='2' class='name'>${playerName2}</td></tr>
+<tr><td>${this.dict.rank}</td><td>${this.dict.point}</td><td></td>
+<td>${this.dict.point}</td><td>${this.dict.rank}</td></tr>
+    </thead><tbody>`;
+    SKILL_LIST.forEach(val => {
+      let skill = val.o;
       if (skill == 'battle_royale') return;
-      let tmp = `<td>${skill}</td>`;
 
-      output += `<tr>
-      <td>${playerData1[skill].position}</td>
-      ${isCompare ? '' : tmp}
-      <td>${playerData1[skill].score}</td>
-      ${!isCompare ? '' :
-          `${tmp}
-        <td>${playerData2[skill].score}</td>
-        <td>${playerData2[skill].position}</td>
-      `}
+      output += `<tr${this.colorClass(playerData1[skill].score, playerData2[skill].score)}>
+      <td>${playerData1[skill].position ? this.formatSkillLevel(playerData1[skill].position, !0, skill) : this.dict.noInTop}</td>
+      <td>${playerData1[skill].score ? this.formatSkillLevel(playerData1[skill].score, !1, skill) : ''}</td>
+      <td>${val.t}</td>
+      <td>${playerData2[skill].score ? this.formatSkillLevel(playerData2[skill].score, !1, skill) : ''}</td>
+      <td>${playerData2[skill].position ? this.formatSkillLevel(playerData2[skill].position, !0, skill) : this.dict.noInTop}</td>
       </tr>`
     });
     output += `</tbody></table>`;
@@ -108,36 +106,50 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     let playerName1 = this.highscoreService.snapShot[1];
     let playerData1 = this.highscoreService.playerScores[playerName1];
     let output = `<table class='hs_table single'
-    ><thead><tr><td colspan='5' class='name'>${playerName1}</td></tr></thead><tbody>`;
+    ><thead><tr><td colspan='5' class='name'>${playerName1}</td></tr>
+    <tr><td colspan='2'>${this.dict.rank}</td><td></td><td colspan='2'>${this.dict.point}</td></tr>
+    </thead><tbody>`;
     SKILL_LIST.forEach(val => {
       let skill = val.o;
       if (skill == 'battle_royale') return;
-      let tmp = `<td>${val.t}</td>`;
+
       output += `<tr>
-      <td>${playerData1[skill].position}</td>
-      <td>${this.colorifyDiff(playerData1[skill].position, playerData1[skill].last_position, !0, skill)}</td>
-      ${tmp}
-      <td>${playerData1[skill].score}</td>
-      <td>${this.colorifyDiff(playerData1[skill].score, playerData1[skill].last_score, !1, skill)}</td>
+      <td>${playerData1[skill].position ? this.formatSkillLevel(playerData1[skill].position, !0, skill) : this.dict.noInTop}</td>
+      <td>${this.colorifyNumber(playerData1[skill].position, playerData1[skill].last_position, !0, skill)}</td>
+      <td>${val.t}</td>
+      <td>${playerData1[skill].score ? this.formatSkillLevel(playerData1[skill].score, !1, skill) : ''}</td>
+      <td>${this.colorifyNumber(playerData1[skill].score, playerData1[skill].last_score, !1, skill)}</td>
       </tr>`
     });
     output += `</tbody></table>`;
     this.container!.innerHTML = output;
   }
 
-  colorifyDiff(current: string, last: string, is_Rank: boolean, skill: string) {
-    if (!current || !last || skill == 'scavenger_hunt') {
+  colorClass(p1: number | undefined, p2: number | undefined) {
+    if (p1 == p2) {
+      return "";
+    }
+    else if (p1! > p2!) {
+      return " class='p1'";
+    }
+    else {
+      return " class='p2'";
+    }
+  }
+
+  colorifyNumber(current: number | undefined, last: number | undefined, is_Rank: boolean, skill: string) {
+    if (!current || !last) {
       return '';
     }
     var green = ' class="green"';
     var red = ' class="red"';
-    var change = Math.abs(parseInt(current) - parseInt(last));
-    if (parseInt(current) < parseInt(last)) {
+    var change = Math.abs(current - last);
+    if (current < last) {
       if (is_Rank) {
         return ' <span' + green + '>(+' + this.formatSkillLevel(change, is_Rank, skill) + ')</span>';
       }
       return ' <span' + red + '>(-' + this.formatSkillLevel(change, is_Rank, skill) + ')</span>';
-    } else if (parseInt(current) > parseInt(last)) {
+    } else if (current > last) {
       if (is_Rank) {
         return ' <span' + red + '>(-' + this.formatSkillLevel(change, is_Rank, skill) + ')</span>';
       }
@@ -146,12 +158,27 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     return '';
   }
 
-  formatSkillLevel(value: number, is_Rank: boolean, skill: string) {
+  formatSkillLevel(value: number | undefined, is_Rank: boolean, skill: string) {
     if (!value) return '';
+    let result = value.toString();
     if (!is_Rank && skill == 'total_xp') {
-      return (value / 10).toFixed(1);
+      result = (value / 10).toFixed(1);
     }
-    return value;
+    result = this.addComma(result);
+
+    return result;
+  }
+
+  addComma(value: string) {
+    if (value != "") {
+      value += "";
+      var arr = value.split(".");
+      var re = /(\d{1,3})(?=(\d{3})+$)/g;
+
+      return arr[0].replace(re, "$1,") + (arr.length == 2 ? "." + arr[1] : "");
+    } else {
+      return '';
+    }
   }
 
 }

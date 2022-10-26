@@ -1,16 +1,16 @@
 .hs_container {
   .hs_menu {
     display: inline-block;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 
     &.hidden2 .panel_layout,
     &.close .panel_layout {
       display: none;
     }
 
-    &.close:hover .panel_layout {
+    /*&.close:hover .panel_layout {
       display: block;
-    }
+    }*/
 
     .panel_layout {
       padding-bottom: 50px;
@@ -120,14 +120,16 @@
 .hs_table {
   text-align: center;
   margin-bottom: 50px;
+  background: #424242;
 
   .name {
     color: #97d1d2;
     font-weight: 700;
+    font-size: 1.2em;
   }
 
   td {
-    padding: 5px 3px;
+    padding: 6px;
   }
 
   tbody tr {
@@ -149,6 +151,39 @@
 
     td:last-child {
       padding-right: 20px;
+    }
+
+  }
+
+  .vs {
+    font-weight: 900;
+    color: gold;
+  }
+
+  &.compare tbody {
+
+    td:nth-child(4),
+    td:nth-child(5) {
+      text-align: left;
+    }
+
+    td:nth-child(1),
+    td:nth-child(2) {
+      text-align: right;
+    }
+
+    .p2 td:nth-child(4),
+    .p2 td:nth-child(5),
+    .p1 td:nth-child(1),
+    .p1 td:nth-child(2) {
+      color: var(--hiscore-green);
+    }
+
+    .p2 td:nth-child(1),
+    .p2 td:nth-child(2),
+    .p1 td:nth-child(4),
+    .p1 td:nth-child(5) {
+      color: var(--hiscore-red);
     }
 
   }

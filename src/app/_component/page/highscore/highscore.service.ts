@@ -194,7 +194,7 @@ export class HighscoreService {
       this.selectedOption_text = $localize`:@@Points:Points`;
     }*/
 
-    await delay(1000);
+    await delay(500);
 
     /*
         i = arr[0] == 'battle_royale' ? 2 : 1;
