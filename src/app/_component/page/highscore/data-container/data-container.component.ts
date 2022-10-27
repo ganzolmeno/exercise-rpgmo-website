@@ -114,6 +114,37 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
       elm.addEventListener('click', () => { this.hs.parseUrl(['player', elm.innerHTML]) });
     })
 
+    let next, prev;
+
+    if (this.hs.outputData[0].length >= 500) {
+      next = document.createElement('div');
+      next.className = 'next_page';
+      next.innerText = $localize`:@@Next:Next`;
+      next.addEventListener('click', _ => {
+        let idx = this.hs.snapShot[0] == 'battle_royale' ? 1 : 0;
+        this.hs.snapShot[2 + idx] += 1;
+        this.hs.parseUrl(this.hs.snapShot);
+      })
+    }
+
+    if (this.hs.page != 0) {
+      prev = document.createElement('div');
+      prev.className = 'prev_page';
+      prev.innerText = $localize`:@@Previous:Previous`;
+      prev.addEventListener('click', _ => {
+        let idx = this.hs.snapShot[0] == 'battle_royale' ? 1 : 0;
+        this.hs.snapShot[2 + idx] -= 1;
+        this.hs.parseUrl(this.hs.snapShot);
+      })
+    }
+
+    if (next || prev) {
+      document.querySelector(`.hs_table`)!.innerHTML += `<tfoot><tr><td colspan='5'></td></tr></tfoot>`;
+      let elm = document.querySelector(`.hs_table tfoot td`);
+      prev ? elm?.append(prev as HTMLElement) : 0;
+      next ? elm?.append(next as HTMLElement) : 0;
+    }
+
     if (this.hs.snapShot[0] == 'battle_royale') {
       this.renderBattleRoyaleOptions();
     }
@@ -127,7 +158,6 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     let skill = this.hs.snapShot[0];
     let idx = -1;
     SKILL_LIST.forEach((v, i) => { if (v.o == skill) idx = i; });
-    console.log(idx)
     let output = `<tr><td colspan='5'><div class='badge_base'>
     <div class='badge_deco'></div>
     <div class='badge_skill' style="background-position-x: -${idx * 36}px;"></div>

@@ -266,3 +266,21 @@
     font-size: 12px;
   }
 }
+
+.next_page,
+.prev_page {
+  color: #97d1d2;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.next_page {
+  float: right;
+}
+
+.prev_page {
+  float: left;
+}

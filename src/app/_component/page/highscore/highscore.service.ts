@@ -15,12 +15,13 @@ export class HighscoreService {
   requestState: BehaviorSubject<number> = new BehaviorSubject(
     REQUEST_STATE.NONE
   );
-  snapShot: string[] = [];
+  snapShot: any[] = [];
   playerScores: any = {};
   outputData: any[] = [];
 
   brMode = 's';
   brStat = 'w';
+  page = 0;
 
   optionNodeTree: any = {};
   readonly nodeGeneric = {
@@ -179,6 +180,7 @@ export class HighscoreService {
       if (arr[i] == 'rank') {
         fin[1] = Math.floor((arr[i + 1] - 1) / 500);
       }
+      this.page=fin[1];
     }
 
     if (this.snapShot[0] == 'player') {
