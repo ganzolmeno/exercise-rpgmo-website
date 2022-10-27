@@ -13,7 +13,7 @@ export class GoTopComponent implements OnInit {
   }
 
   goTop():void{
-    window.scrollTo(0, 0);
+    window.scrollTo({top:0,behavior:'smooth'});
   }
 
 }
