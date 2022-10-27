@@ -114,6 +114,18 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
       elm.addEventListener('click', () => { this.hs.parseUrl(['player', elm.innerHTML]) });
     })
 
+    this.renderPageBtn();
+
+    if (this.hs.snapShot[0] == 'battle_royale') {
+      this.renderBattleRoyaleOptions();
+    }
+
+    this.renderTitle();
+
+    this.scroll2Target();
+  }
+
+  renderPageBtn() {
     let next, prev;
 
     if (this.hs.outputData[0].length >= 500) {
@@ -122,7 +134,8 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
       next.innerText = $localize`:@@Next:Next`;
       next.addEventListener('click', _ => {
         let idx = this.hs.snapShot[0] == 'battle_royale' ? 1 : 0;
-        this.hs.snapShot[2 + idx] += 1;
+        this.hs.snapShot[1 + idx] = 'page';
+        this.hs.snapShot[2 + idx] = this.hs.page + 1;
         this.hs.parseUrl(this.hs.snapShot);
       })
     }
@@ -133,25 +146,20 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
       prev.innerText = $localize`:@@Previous:Previous`;
       prev.addEventListener('click', _ => {
         let idx = this.hs.snapShot[0] == 'battle_royale' ? 1 : 0;
-        this.hs.snapShot[2 + idx] -= 1;
+        this.hs.snapShot[1 + idx] = 'page';
+        this.hs.snapShot[2 + idx] = this.hs.page - 1;
         this.hs.parseUrl(this.hs.snapShot);
       })
     }
 
     if (next || prev) {
-      document.querySelector(`.hs_table`)!.innerHTML += `<tfoot><tr><td colspan='5'></td></tr></tfoot>`;
+      let tmp = document.createElement('tfoot');
+      tmp.innerHTML=`<tr><td colspan='5'></td></tr>`;
+      document.querySelector(`.hs_table`)!.append(tmp);
       let elm = document.querySelector(`.hs_table tfoot td`);
-      prev ? elm?.append(prev as HTMLElement) : 0;
-      next ? elm?.append(next as HTMLElement) : 0;
+      prev ? elm?.append(prev as HTMLDivElement) : 0;
+      next ? elm?.append(next as HTMLDivElement) : 0;
     }
-
-    if (this.hs.snapShot[0] == 'battle_royale') {
-      this.renderBattleRoyaleOptions();
-    }
-
-    this.renderTitle();
-
-    this.scroll2Target();
   }
 
   renderTitle() {
@@ -182,7 +190,7 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
       if (scrolledY) {
         window.scroll(0, scrolledY - 80);/* fixed header*/
       }
-    }, 300)
+    }, 100)
   }
 
   renderBattleRoyaleOptions() {
