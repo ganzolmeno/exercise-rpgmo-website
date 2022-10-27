@@ -37,7 +37,7 @@ export class StatusLineComponent implements AfterViewInit {
   }
 
   langChange(){
-    location.href = `${location.origin}/fake/${this.lang}/?setlang=${this.lang}`;//TODO:
+    location.href = `${location.origin}/fake/${this.lang}/#/?setlang=${this.lang}`;//TODO:
   }
 
   private animate2x(bool: boolean) {
