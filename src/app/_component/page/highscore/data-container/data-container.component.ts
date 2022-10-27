@@ -143,10 +143,15 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     let add = snapShot[0] == 'battle_royale' ? 1 : 0;
     setTimeout(_ => {
       if (snapShot[0] != 'player' && snapShot[1 + add] == 'rank')
-        document.querySelector(`.hs_table tbody tr:nth-child(${parseInt(snapShot[2 + add])})`)!.scrollIntoView({ behavior: "smooth" }),
+        document.querySelector(`.hs_table tbody tr:nth-child(${parseInt(snapShot[2 + add])})`)!.scrollIntoView(true),
           document.querySelector(`.hs_table tbody tr:nth-child(${parseInt(snapShot[2 + add])})`)!.classList.add('highlight');
       else
-        document.querySelector('.hs_table')!.scrollIntoView({ behavior: "smooth" });
+        document.querySelector('.hs_table')!.scrollIntoView(true);
+      let scrolledY = window.scrollY;
+
+      if (scrolledY) {
+        window.scroll(0, scrolledY - 80);/* fixed header*/
+      }
     }, 300)
   }
 

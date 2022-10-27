@@ -1,0 +1,25 @@
+.btn {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  background-color: #424242;
+  color: #eaeaea;
+  cursor: pointer;
+  border-radius: 50px;
+  font-size: 18px;
+  border: 1px solid #000;
+  box-shadow: 0 0 5px #141414;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    text-decoration: none;
+    background-color: #436c72;
+    color: #fff;
+  }
+}
