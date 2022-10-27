@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'exercise-rpgmo-website';
+
+  constructor(private route: ActivatedRoute) {
+
+  }
+  ngOnInit(): void {
+    this.route.queryParams
+      .subscribe(params => {
+        if (params['setlang']) {
+          localStorage['setlang'] = params['setlang'];
+        }
+      }
+      );
+  }
 }

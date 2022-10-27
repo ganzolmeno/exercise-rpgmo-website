@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="1359092845802014498" datatype="html">
+        <source>Expand</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/btn-menu/btn-menu.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Skills" datatype="html">
+        <source>Skills</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/btn-menu/btn-menu.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Challenges" datatype="html">
+        <source>Challenges</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/btn-menu/btn-menu.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3199287285718436571" datatype="html">
+        <source>Compare / filter players</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/btn-menu/btn-menu.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Player name" datatype="html">
+        <source>Player name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/btn-menu/btn-menu.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/btn-menu/btn-menu.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Filter" datatype="html">
+        <source>Filter</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/btn-menu/btn-menu.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Not in top" datatype="html">
+        <source>Not in top</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/data-container/data-container.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Level" datatype="html">
+        <source>Level</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/data-container/data-container.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="XP (Millions)" datatype="html">
+        <source>XP (Millions)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/data-container/data-container.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Points" datatype="html">
+        <source>Points</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/data-container/data-container.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Rank" datatype="html">
+        <source>Rank</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/data-container/data-container.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Player" datatype="html">
+        <source>Player</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/data-container/data-container.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Next" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/data-container/data-container.component.ts</context>
+          <context context-type="linenumber">134</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Previous" datatype="html">
+        <source>Previous</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/data-container/data-container.component.ts</context>
+          <context context-type="linenumber">146</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Solo" datatype="html">
+        <source>Solo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/data-container/data-container.component.ts</context>
+          <context context-type="linenumber">199</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Duo" datatype="html">
+        <source>Duo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/data-container/data-container.component.ts</context>
+          <context context-type="linenumber">200</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Trio" datatype="html">
+        <source>Trio</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/data-container/data-container.component.ts</context>
+          <context context-type="linenumber">201</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Wins" datatype="html">
+        <source>Wins</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/data-container/data-container.component.ts</context>
+          <context context-type="linenumber">214</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Kills" datatype="html">
+        <source>Kills</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/data-container/data-container.component.ts</context>
+          <context context-type="linenumber">215</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Plays" datatype="html">
+        <source>Plays</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/data-container/data-container.component.ts</context>
+          <context context-type="linenumber">216</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Deaths" datatype="html">
+        <source>Deaths</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/data-container/data-container.component.ts</context>
+          <context context-type="linenumber">217</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Highscore" datatype="html">
+        <source>Highscore</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/menu/menu.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="No data." datatype="html">
+        <source>No data.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Total" datatype="html">
+        <source>Total</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">303</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Total xp" datatype="html">
+        <source>Total xp</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">307</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Accuracy" datatype="html">
+        <source>Accuracy</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">311</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Strength" datatype="html">
+        <source>Strength</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">315</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Defense" datatype="html">
+        <source>Defense</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">319</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Health" datatype="html">
+        <source>Health</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">323</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Magic" datatype="html">
+        <source>Magic</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">327</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Alchemy" datatype="html">
+        <source>Alchemy</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">331</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Woodcutting" datatype="html">
+        <source>Woodcutting</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">335</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Farming" datatype="html">
+        <source>Farming</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">339</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Fishing" datatype="html">
+        <source>Fishing</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">343</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Cooking" datatype="html">
+        <source>Cooking</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">347</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Jewelry" datatype="html">
+        <source>Jewelry</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">351</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Carpentry" datatype="html">
+        <source>Carpentry</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">355</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Forging" datatype="html">
+        <source>Forging</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">359</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Mining" datatype="html">
+        <source>Mining</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">363</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Breeding" datatype="html">
+        <source>Breeding</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">367</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Fletching" datatype="html">
+        <source>Fletching</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">371</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Archery" datatype="html">
+        <source>Archery</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">375</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Wizardry" datatype="html">
+        <source>Wizardry</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">379</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Fungiculture" datatype="html">
+        <source>Fungiculture</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">383</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Party" datatype="html">
+        <source>Party</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">387</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Skill quests" datatype="html">
+        <source>Skill quests</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">391</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Kill quests" datatype="html">
+        <source>Kill quests</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">395</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Cathedral" datatype="html">
+        <source>Cathedral</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">399</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Scavenger hunt" datatype="html">
+        <source>Scavenger hunt</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">403</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Battle royale" datatype="html">
+        <source>Battle royale</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/highscore/highscore.service.ts</context>
+          <context context-type="linenumber">407</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Music" datatype="html">
+        <source>Music</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/media/audio-player/audio-player.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/media/media.component.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Maps" datatype="html">
+        <source>Maps</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/media/maps-box/maps-box.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Media" datatype="html">
+        <source>Media</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/media/media.component.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/menu/menu.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="RPG MO Trailer" datatype="html">
+        <source>RPG MO Trailer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/media/media.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="World map" datatype="html">
+        <source>World map</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/media/media.component.html</context>
+          <context context-type="linenumber">13,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3469979896043212821" datatype="html">
+        <source>Got fan art? Send it to support@mo.ee, don&apos;t forget to include your player name for the reward.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/media/media.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5708184454240205570" datatype="html">
+        <source>Writing an article or interested in promotional materials? Send your wishes to support@mo.ee</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/media/media.component.html</context>
+          <context context-type="linenumber">21,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Screenshots" datatype="html">
+        <source>Screenshots</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/media/screenshots-box/screenshots-box.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="News" datatype="html">
+        <source>News</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/page/news/news.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Game Rules" datatype="html">
+        <source>Game Rules</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/copyright-line/copyright-line.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Privacy Policy" datatype="html">
+        <source>Privacy Policy</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/copyright-line/copyright-line.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="About" datatype="html">
+        <source>About</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/menu/menu.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="841934696444961534" datatype="html">
+        <source>News</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/menu/menu.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Credits" datatype="html">
+        <source>Credits</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/menu/menu.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Contact" datatype="html">
+        <source>Contact</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/menu/menu.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Guide" datatype="html">
+        <source>Guide</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/menu/menu.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Wiki" datatype="html">
+        <source>Wiki</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/menu/menu.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Register" datatype="html">
+        <source>Register</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/menu/menu.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Lost password" datatype="html">
+        <source>Lost password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/menu/menu.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Transfer" datatype="html">
+        <source>Transfer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/menu/menu.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Forum" datatype="html">
+        <source>Forum</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/menu/menu.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Download" datatype="html">
+        <source>Download</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/menu/menu.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="PLAY FREE NOW" datatype="html">
+        <source>PLAY FREE NOW</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/menu/menu.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/menu/menu.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Follow Us" datatype="html">
+        <source>Follow Us</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/social-media/social-media.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="people online" datatype="html">
+        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="INTERPOLATION" equiv-text="{{lastOnline}}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> online</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/status-line/status-line.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2X experience!" datatype="html">
+        <source>2X experience!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_component/share/status-line/status-line.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8675833524513491299" datatype="html">
+        <source>RPG MO - Web Browser Game</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_service/locale.service.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_service/locale.service.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <note priority="1" from="description">title-suffix</note>
+      </trans-unit>
+      <trans-unit id="1527272243812754568" datatype="html">
+        <source>An addictive multiplayer game where you slay monsters and increase levels in 19 different skills. Come and invite your friends too, it is fun! Free to play!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_service/locale.service.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_service/locale.service.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <note priority="1" from="description">meta-description</note>
+      </trans-unit>
+      <trans-unit id="5176583448540183626" datatype="html">
+        <source>rpg, mmorpg, online, mo, dungeon, runescape, ultima, retro, magic, old-school, html5, free, f2p, pvp, guilds, gamepad, enchanting, 2d, adventure, agriculture, base-building, crafting, exploration, fishing, free to play, indie, isometric, massively multiplayer, multiplayer, open world, pixel graphics, relaxing, retro, sandbox, fletching, archery, woodcutting, alchemy, farming, breeding, mining, jewelry, cooking, fighting, wizardry, fungiculture</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_service/locale.service.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+        <note priority="1" from="description">meta-keywords</note>
+      </trans-unit>
+      <trans-unit id="2335859716720529790" datatype="html">
+        <source>A simple yet addictive multiplayer game where you can fight monsters and increase levels in 19 different skills. Come and invite your friends too, it is fun! Free to play!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/_service/locale.service.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+        <note priority="1" from="description">meta-og.description</note>
+      </trans-unit>
+      <trans-unit id="Play" datatype="html">
+        <source>Play</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5760098958925895204" datatype="html">
+        <source>Play RPG MO for free and join the awesome community.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description">meta-description-play</note>
+      </trans-unit>
+      <trans-unit id="6292464780618695818" datatype="html">
+        <source>RPG MO screenshots, videos and music.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <note priority="1" from="description">meta-description-media</note>
+      </trans-unit>
+      <trans-unit id="9038699631848372832" datatype="html">
+        <source>See who are the best players in RPG MO.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <note priority="1" from="description">meta-description-highscore</note>
+      </trans-unit>
+      <trans-unit id="2390996105042770521" datatype="html">
+        <source>Latest news and updates to RPG MO</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <note priority="1" from="description">meta-description-news</note>
+      </trans-unit>
+      <trans-unit id="1381299267739309349" datatype="html">
+        <source>People behind the making of RPG MO</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <note priority="1" from="description">meta-description-credits</note>
+      </trans-unit>
+      <trans-unit id="4618390865068032908" datatype="html">
+        <source>Create an account and start enjoying the free MMORPG called RPG MO</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <note priority="1" from="description">meta-description-register</note>
+      </trans-unit>
+      <trans-unit id="1957342538457245857" datatype="html">
+        <source>Need to contact us? This is the page to contact creators of RPG MO.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+        <note priority="1" from="description">meta-description-contact</note>
+      </trans-unit>
+      <trans-unit id="2935598845688669657" datatype="html">
+        <source>Download standalone applications for Windows, Mac, Linux, Android</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <note priority="1" from="description">meta-description-download</note>
+      </trans-unit>
+      <trans-unit id="1675355350428773419" datatype="html">
+        <source>Join the RPG MO community.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+        <note priority="1" from="description">meta-description-forum</note>
+      </trans-unit>
+      <trans-unit id="6396817880160467111" datatype="html">
+        <source>RPG MO wiki and information</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+        <note priority="1" from="description">meta-description-wiki</note>
+      </trans-unit>
+      <trans-unit id="Game rules" datatype="html">
+        <source>Game rules</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4179000496417459626" datatype="html">
+        <source>Read about RPG MO&apos;s game rules.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+        <note priority="1" from="description">meta-description-rules</note>
+      </trans-unit>
+      <trans-unit id="Chat rules" datatype="html">
+        <source>Chat rules</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8004942509447940011" datatype="html">
+        <source>Read about RPG MO&apos;s chat rules.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+        <note priority="1" from="description">meta-description-chatrules</note>
+      </trans-unit>
+      <trans-unit id="1389356662402633857" datatype="html">
+        <source>Read about RPG MO&apos;s privacy policy.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+        <note priority="1" from="description">meta-description-privacy</note>
+      </trans-unit>
+      <trans-unit id="Free MMORPG" datatype="html">
+        <source>Free MMORPG</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">102</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -26,7 +26,6 @@ export class StatusLineService {
   }
 
   private updatePlaying(): void {
-    return; //TODO: take off
     this.pageActive && this.http.get<onlineData>("https://rpg-de.mo.ee/online.json?t=" + Math.random())
       .subscribe({
         next: (data: onlineData) => {

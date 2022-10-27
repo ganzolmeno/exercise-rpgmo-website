@@ -7,7 +7,7 @@
     "build": "ng build --base-href=/fake/ --aot --build-optimizer",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "i18n": "ng extract-i18n --output-path=src/i18n/ --out-file=lang.xlf",
+    "i18n": "ng extract-i18n --output-path=src/lang/ --out-file=lang.xlf",
     "dev:ssr": "ng run exercise-rpgmo-website:serve-ssr",
     "serve:ssr": "node dist/exercise-rpgmo-website/main.js",
     "build:ssr": "ng build && ng run exercise-rpgmo-website:server && cpx main.js dist/exercise-rpgmo-website",

@@ -9,11 +9,11 @@
         "sourceLocale": "en",
         "locales": {
           "zh": {
-            "translation": "src/i18n/zh/lang.xlf",
+            "translation": "src/lang/lang.zh.xlf",
             "baseHref": "zh/"
           },
           "zh-tw": {
-            "translation": "src/i18n/zh-tw/lang.xlf",
+            "translation": "src/lang/lang.zh-tw.xlf",
             "baseHref": "zh-tw/"
           }
         }
