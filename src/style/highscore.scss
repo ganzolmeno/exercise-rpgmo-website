@@ -147,7 +147,12 @@
     &:hover {
       background: #333;
       box-shadow: 0 0 2px #aaa;
-      scale: 1.2;
+      scale: 1.1;
+    }
+
+    &.highlight {
+      background: #222;
+      animation: twink 1s linear 3;
     }
 
     td:first-child {
@@ -192,6 +197,7 @@
     }
 
   }
+
   &.table_skill tbody,
   &.single tbody {
 
@@ -207,4 +213,56 @@
   }
 }
 
-@media screen and (max-width: 1000px) {}
+@keyframes twink {
+
+  0%,
+  100% {
+    background: orange;
+  }
+
+  50% {
+    background: #000;
+  }
+}
+
+.badge_base {
+  background: url(^assets/img/level_up.png) no-repeat;
+  width: 170px;
+  height: 110px;
+  margin: 0 auto;
+  transform: scale(1.5);
+  transform-origin: bottom center;
+
+  .badge_deco {
+    position: relative;
+    background: url(^assets/img/level_up_120.gif) no-repeat;
+    width: 110px;
+    height: 118px;
+    left: 30px;
+    top: -10px;
+  }
+
+  .badge_skill {
+    background: url(^assets/img/skill_level_up.png) no-repeat;
+    width: 36px;
+    height: 30px;
+    left: 66px;
+    top: -82px;
+    position: relative;
+  }
+
+  .badge_label {
+    width: 92px;
+    height: 21px;
+    display: inline-block;
+    line-height: 21px;
+    text-shadow: #fff 0 0 2px;
+    font-weight: 700;
+    color: #000;
+    text-align: center;
+    white-space: nowrap;
+    position: relative;
+    top: -80px;
+    font-size: 12px;
+  }
+}

@@ -1,3 +1,4 @@
+import { delay } from 'src/lib/helper';
 import { Component, AfterViewInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
@@ -24,7 +25,10 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
   requestState$!: Subscription;
 
 
-  constructor(private highscoreService: HighscoreService, @Inject(PLATFORM_ID) private platformId: any) { }
+  constructor(
+    private hs: HighscoreService,
+    @Inject(PLATFORM_ID) private platformId: any
+  ) { }
 
   ngAfterViewInit(): void {
     this.container = document.getElementById('hs_output');
@@ -34,7 +38,7 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     let loading = document.getElementById('hs_loading');
     let err = document.getElementById('hs_err_output');
 
-    this.requestState$ = this.highscoreService.requestState.subscribe(stat => {
+    this.requestState$ = this.hs.requestState.subscribe(stat => {
       this.container?.classList.add('hidden');
       loading?.classList.add('hidden');
       err?.classList.add('hidden');
@@ -44,7 +48,7 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
           break;
         case REQUEST_STATE.ERROR:
           err!.classList.remove('hidden');
-          err!.innerText = this.highscoreService.outputData[0];
+          err!.innerText = this.hs.outputData[0];
           break;
         case REQUEST_STATE.COMPELETE:
           this.renderData();
@@ -57,13 +61,13 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
   }
 
   renderData() {
-    let snapShot = this.highscoreService.snapShot;
+    let snapShot = this.hs.snapShot;
     if (snapShot[0] == 'battle_royale') {
       //renderBROption
     }
 
     if (snapShot[0] == 'player') {
-      this.highscoreService.snapShot.length == 3 ? this.renderCompareData() : this.renderPlayerData();
+      this.hs.snapShot.length == 3 ? this.renderCompareData() : this.renderPlayerData();
     } else {
       this.renderSkill();
     }
@@ -74,26 +78,8 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     this.requestState$.unsubscribe();
   }
 
-  /* let url = '';
-
- if (arr[0] == 'player') {
-   url = this.highscore_url + "playerskills?n=" + encodeURIComponent(fin[1]) + "&t=" + tenMinuteCache();
- } else {
-   url = this.highscore_url + "highscores?b=" + fin[0] + "&p=" + fin[1] + "&t=" + tenMinuteCache();
- }*/
-
-  //['Level' , 'XP (Millions)', 'Points']
-
-  /*this.selectedOption_text = $localize`:@@Level:Level`;
-  if (this.selectedOption == "total_xp") {
-    this.selectedOption_text = $localize`:@@XP (Millions):XP (Millions)`;
-  }
-  else if (["party", "scavenger_hunt", "skill_quest", "kill_quest", "battle_royale"].indexOf(this.selectedOption) != -1 || /br_/.test(this.selectedOption)) {
-    this.selectedOption_text = $localize`:@@Points:Points`;
-  }*/
-
   renderSkill() {
-    let snapShot = this.highscoreService.snapShot;
+    let snapShot = this.hs.snapShot;
     let skill = snapShot[0]
     let level_text = this.dict.level;
     if (skill == "total_xp") {
@@ -108,25 +94,118 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     <td>${this.dict.player}</td>
     <td colspan='2'>${level_text}</td>
     </tr></thead><tbody>`;
-    this.highscoreService.outputData[0].forEach((data: any) => {
-      output += `<tr><td rank='${data.position}'>${this.formatSkillLevel(data['position'],!0,skill)}</td>
-      <td>${this.colorifyNumber(data['position'],data['last_position'],!0,skill)}</td>
-      <td player='${data.player}'>${data.player}</td>
-      <td>${this.formatSkillLevel(data['score'],!1,skill)}</td>
-      <td>${this.colorifyNumber(data['score'],data['last_score'],!1,skill)}</td>
+    this.hs.outputData[0].forEach((data: any) => {
+      output += `<tr><td>${this.formatSkillLevel(data['position'], !0, skill)}</td>
+      <td>${this.colorifyNumber(data['position'], data['last_position'], !0, skill)}</td>
+      <td>${data.player}</td>
+      <td>${this.formatSkillLevel(data['score'], !1, skill)}</td>
+      <td>${this.colorifyNumber(data['score'], data['last_score'], !1, skill)}</td>
       </tr>`;
     });
 
     output += `</tbody></table>`;
     this.container!.innerHTML = output;
+    this.container!.querySelectorAll('tbody td:nth-child(1)').forEach(elm => {
+      elm.classList.add('btn');
+      elm.addEventListener('click', () => { this.displayRank(parseInt(elm.innerHTML)) });
+    })
+    this.container!.querySelectorAll('tbody td:nth-child(3)').forEach(elm => {
+      elm.classList.add('btn');
+      elm.addEventListener('click', () => { this.hs.parseUrl(['player', elm.innerHTML]) });
+    })
+
+    if (this.hs.snapShot[0] == 'battle_royale') {
+      this.renderBattleRoyaleOptions();
+    }
+
+    this.renderTitle();
+
+    this.scroll2Target();
+  }
+
+  renderTitle() {
+    let skill = this.hs.snapShot[0];
+    let idx = -1;
+    SKILL_LIST.forEach((v, i) => { if (v.o == skill) idx = i; });
+    console.log(idx)
+    let output = `<tr><td colspan='5'><div class='badge_base'>
+    <div class='badge_deco'></div>
+    <div class='badge_skill' style="background-position-x: -${idx * 36}px;"></div>
+    <div class='badge_label'>${SKILL_LIST[idx].t}</div>
+    </div></td></tr>`;
+
+    let container = this.container!.querySelector('.hs_table thead');
+    container!.innerHTML = output + container!.innerHTML;
+  }
+
+  scroll2Target() {
+    let snapShot = this.hs.snapShot;
+    let add = snapShot[0] == 'battle_royale' ? 1 : 0;
+    setTimeout(_ => {
+      if (snapShot[0] != 'player' && snapShot[1 + add] == 'rank')
+        document.querySelector(`.hs_table tbody tr:nth-child(${parseInt(snapShot[2 + add])})`)!.scrollIntoView({ behavior: "smooth" }),
+          document.querySelector(`.hs_table tbody tr:nth-child(${parseInt(snapShot[2 + add])})`)!.classList.add('highlight');
+      else
+        document.querySelector('.hs_table')!.scrollIntoView({ behavior: "smooth" });
+    }, 300)
+  }
+
+  renderBattleRoyaleOptions() {
+    let select = document.createElement('select');
+    select.id = "br_mode";
+    [{ v: 's', n: $localize`:@@Solo:Solo` },
+    { v: 'd', n: $localize`:@@Duo:Duo` },
+    { v: 't', n: $localize`:@@Trio:Trio` }].forEach(obj => {
+      select.innerHTML += `<option value='${obj.v}'>${obj.n}</option>`
+    })
+    select.value = this.hs.brMode;
+    select.addEventListener('change', e => { this.displayBattleRoyale() });
+
+    let container = this.container!.querySelector('.hs_table thead');
+    container!.innerHTML = `<tr><td colspan='5'></td></tr>` + container!.innerHTML;
+    container = this.container!.querySelector('.hs_table thead td');
+    container?.append(select);
+
+    select = document.createElement('select');
+    select.id = "br_stat";
+    [{ v: 'w', n: $localize`:@@Wins:Wins` },
+    { v: 'k', n: $localize`:@@Kills:Kills` },
+    { v: 'p', n: $localize`:@@Plays:Plays` },
+    { v: 'd', n: $localize`:@@Deaths:Deaths` }].forEach(obj => {
+      select.innerHTML += `<option value='${obj.v}'>${obj.n}</option>`
+    })
+    select.value = this.hs.brStat;
+    select.addEventListener('change', e => { this.displayBattleRoyale() });
+    container?.append(select);
+  }
+
+  displayBattleRoyale() {
+    this.hs.brMode = (<HTMLInputElement>document.getElementById('br_mode')!).value;
+    this.hs.brStat = (<HTMLInputElement>document.getElementById('br_stat')!).value;
+    let arr = ['battle_royale', `br_${this.hs.brMode}_${this.hs.brStat}`, 'page', 0]
+    this.hs.setUrl(arr);
+    this.hs.requestData(arr);
+  }
+
+  displayRank(num: number) {
+    if (num < 0) return;
+    document.querySelectorAll('tr').forEach(v => {
+      v.classList.remove('highlight');
+    });
+    document.querySelectorAll('tbody tr')[num - 1].classList.add('highlight');
+    if (this.hs.snapShot[0] == "battle_royale") {
+      this.hs.setUrl([this.hs.snapShot[0], 'br_' + this.hs.brMode + '_' + this.hs.brStat, 'rank', num]);
+    } else {
+      this.hs.setUrl([this.hs.snapShot[0], 'rank', num]);
+    }
   }
 
   renderCompareData() {
-    let snapShot = this.highscoreService.snapShot;
+    let snapShot = this.hs.snapShot;
     let playerName1 = snapShot[1];
-    let playerData1 = this.highscoreService.playerScores[playerName1];
+    let playerData1 = this.hs.playerScores[playerName1];
     let playerName2 = snapShot[2];
-    let playerData2 = this.highscoreService.playerScores[playerName2];
+    let playerData2 = this.hs.playerScores[playerName2];
     let output =
       `<table class='hs_table compare'><thead>
       <tr><td colspan='2' class='name'>${playerName1}</td>
@@ -151,8 +230,8 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
   }
 
   renderPlayerData() {
-    let playerName1 = this.highscoreService.snapShot[1];
-    let playerData1 = this.highscoreService.playerScores[playerName1];
+    let playerName1 = this.hs.snapShot[1];
+    let playerData1 = this.hs.playerScores[playerName1];
     let output = `<table class='hs_table single'
     ><thead><tr><td colspan='5' class='name'>${playerName1}</td></tr>
     <tr class='field_name'><td colspan='2'>${this.dict.rank}</td><td></td><td colspan='2'>${this.dict.point}</td></tr>

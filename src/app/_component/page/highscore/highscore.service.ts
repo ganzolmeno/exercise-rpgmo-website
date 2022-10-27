@@ -145,6 +145,10 @@ export class HighscoreService {
     }
     this.requestState.next(REQUEST_STATE.LOADING);
     this.snapShot = checked.map(v => v);;
+    if(this.snapShot[0] == 'battle_royale'){
+      this.brMode = this.snapShot[1].charAt(3);
+      this.brStat = this.snapShot[1].charAt(5);
+    }
 
     this.setUrl(checked, isRelpace);
     this.requestData(checked);
@@ -176,7 +180,6 @@ export class HighscoreService {
         fin[1] = Math.floor((arr[i + 1] - 1) / 500);
       }
     }
-    await delay(300);
 
     if (this.snapShot[0] == 'player') {
       fin.shift();

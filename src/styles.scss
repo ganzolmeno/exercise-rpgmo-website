@@ -153,6 +153,14 @@ select,
   border: 1px solid #333;
   text-shadow: 1px 1px #000000;
   margin-right: 6px;
+  transition: .2s;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    background: #333;
+    box-shadow: 0 0 2px #888 inset;
+  }
 }
 
 .click2play {
@@ -184,4 +192,12 @@ select,
 
 .green {
   color: var(--hiscore-green);
+}
+
+.btn {
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
