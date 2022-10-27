@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, AfterViewInit, Inject, PLATFORM_ID, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, Inject, PLATFORM_ID, ViewChild, ElementRef, LOCALE_ID } from '@angular/core';
 import { StatusLineService } from './status-line.service';
 
 @Component({
@@ -9,12 +9,20 @@ import { StatusLineService } from './status-line.service';
 })
 export class StatusLineComponent implements AfterViewInit {
 
+  @ViewChild("lang_select") select!: ElementRef;
   @ViewChild("xp") xp!: ElementRef;
   lastOnline: number = 30;
+  langMapping = [
+    { code: 'en', name: "English" },
+    { code: 'zh', name: "简体中文" },
+    { code: 'zh-tw', name: "繁體中文" }
+  ];
+  lang = this.locale;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
-    private statusLineService: StatusLineService
+    private statusLineService: StatusLineService,
+    @Inject(LOCALE_ID) public locale: string
   ) { }
 
   ngAfterViewInit() {
@@ -26,7 +34,11 @@ export class StatusLineComponent implements AfterViewInit {
     this.statusLineService.isDoubleXp.subscribe(bool => {
       this.animate2x(bool);
     })
+  }
 
+  langChange(){
+    location.href = `${location.origin}/fake/${this.lang}/?=setlang=${this.lang}`;
+    console.log(location.href)
   }
 
   private animate2x(bool: boolean) {

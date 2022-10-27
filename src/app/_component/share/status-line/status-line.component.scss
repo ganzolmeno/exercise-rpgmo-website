@@ -4,6 +4,13 @@
   align-items: stretch;
   justify-content: center;
 
+  select{
+    margin: 3px 30px;
+    border-radius: 3px;
+    padding: 5px;
+    text-align: center;
+  }
+
   &>div {
     margin: 3px 30px;
     border-radius: 3px;

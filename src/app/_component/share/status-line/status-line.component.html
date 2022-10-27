@@ -1,4 +1,7 @@
 <div class="content">
+  <select  [(ngModel)]="lang" (change)="langChange()">
+    <option *ngFor="let lang of langMapping" [value]="lang.code">{{lang.name}}</option>
+  </select>
   <div class="currently_online" i18n="@@people online"><span>{{lastOnline}}</span> online</div>
   <div #xp class="current_xp xp_hidden" i18n="@@2X experience!" hidden>2X experience!</div>
 </div>
