@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open --host=0.0.0.0 --configuration=en --port=4000",
-    "build": "ng build --base-href=/fake/ --aot --build-optimizer",
+    "start": "ng run exercise-rpgmo-website:serve:development --open --host=0.0.0.0 --port=4000",
+    "build": "ng build --base-href=/copy/ --aot --build-optimizer",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "i18n": "ng extract-i18n --output-path=src/lang/ --out-file=lang.xlf",

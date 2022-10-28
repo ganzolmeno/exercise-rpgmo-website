@@ -98,6 +98,7 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
+              "localize": false,
               "namedChunks": true
             },
             "en": {

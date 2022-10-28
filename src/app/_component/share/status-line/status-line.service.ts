@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment';
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { HostListener, Inject, Injectable, PLATFORM_ID } from '@angular/core';
@@ -26,6 +27,7 @@ export class StatusLineService {
   }
 
   private updatePlaying(): void {
+    if(!environment.production) return;
     this.pageActive && this.http.get<onlineData>("https://rpg-de.mo.ee/online.json?t=" + Math.random())
       .subscribe({
         next: (data: onlineData) => {
