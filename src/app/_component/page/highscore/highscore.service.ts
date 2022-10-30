@@ -19,8 +19,8 @@ export class HighscoreService {
   playerScores: any = {};
   outputData: any[] = [];
 
-  brMode = 's';
-  brStat = 'w';
+  brMode = 'solo';
+  brStat = 'wins';
   page = 0;
 
   optionNodeTree: any = {};
@@ -30,6 +30,16 @@ export class HighscoreService {
     ΦΦnext: !0,
     page: { ΦΦdefault: 0, ΦΦtype: 'number' },
     rank: { ΦΦdefault: 0, ΦΦtype: 'number' },
+  };
+
+  readonly brBaseNodeGeneric = {
+    ΦΦtype: 'option',
+    ΦΦdefault: 'wins',
+    ΦΦnext: !0,
+    wins: this.nodeGeneric,
+    kills: this.nodeGeneric,
+    plays: this.nodeGeneric,
+    deaths: this.nodeGeneric,
   };
 
   skills = [
@@ -78,20 +88,11 @@ export class HighscoreService {
     });
     this.optionNodeTree['battle_royale'] = {
       ΦΦtype: 'option',
-      ΦΦdefault: 'br_s_w',
+      ΦΦdefault: 'solo',
       ΦΦnext: !0,
-      br_s_w: this.nodeGeneric,
-      br_s_k: this.nodeGeneric,
-      br_s_p: this.nodeGeneric,
-      br_s_d: this.nodeGeneric,
-      br_d_w: this.nodeGeneric,
-      br_d_k: this.nodeGeneric,
-      br_d_p: this.nodeGeneric,
-      br_d_d: this.nodeGeneric,
-      br_t_w: this.nodeGeneric,
-      br_t_k: this.nodeGeneric,
-      br_t_p: this.nodeGeneric,
-      br_t_d: this.nodeGeneric,
+      solo: this.brBaseNodeGeneric,
+      duo: this.brBaseNodeGeneric,
+      trio: this.brBaseNodeGeneric,
     };
     this.optionNodeTree['player'] = { ΦΦtype: 'name' };
     this.skills.push('battle_royale');
@@ -146,9 +147,9 @@ export class HighscoreService {
     }
     this.requestState.next(REQUEST_STATE.LOADING);
     this.snapShot = checked.map(v => v);;
-    if(this.snapShot[0] == 'battle_royale'){
-      this.brMode = this.snapShot[1].charAt(3);
-      this.brStat = this.snapShot[1].charAt(5);
+    if (this.snapShot[0] == 'battle_royale') {
+      this.brMode = this.snapShot[1];
+      this.brStat = this.snapShot[2];
     }
 
     this.setUrl(checked, isRelpace);
@@ -168,19 +169,21 @@ export class HighscoreService {
 
   async requestData(arr: any[]): Promise<void> {
     if (!arr.length) return;
+
+    await delay(50);
     let fin = [arr[0]];
     if (arr[0] == 'player') {
       fin = arr;
     } else if (arr[0] == 'battle_royale') {
-      fin = [arr[1]];
+      fin = [`br_${this.brMode.charAt(0)}_${this.brStat.charAt(0)}`];
     }
-    let i = arr[0] == 'battle_royale' ? 2 : 1;
+    let i = arr[0] == 'battle_royale' ? 3 : 1;
     if (arr[0] != 'player') {
       fin.push(arr[i + 1]);
       if (arr[i] == 'rank') {
         fin[1] = Math.floor((arr[i + 1] - 1) / 500);
       }
-      this.page=fin[1];
+      this.page = fin[1];
     }
 
     if (this.snapShot[0] == 'player') {

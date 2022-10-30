@@ -62,9 +62,6 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
 
   renderData() {
     let snapShot = this.hs.snapShot;
-    if (snapShot[0] == 'battle_royale') {
-      //renderBROption
-    }
 
     if (snapShot[0] == 'player') {
       this.hs.snapShot.length == 3 ? this.renderCompareData() : this.renderPlayerData();
@@ -107,7 +104,7 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     this.container!.innerHTML = output;
     this.container!.querySelectorAll('tbody td:nth-child(1)').forEach(elm => {
       elm.classList.add('btn');
-      elm.addEventListener('click', () => { this.displayRank(parseInt(elm.innerHTML)) });
+      elm.addEventListener('click', () => { this.displayRank(parseInt(elm.innerHTML.replace(',', ''))) });
     })
     this.container!.querySelectorAll('tbody td:nth-child(3)').forEach(elm => {
       elm.classList.add('btn');
@@ -133,7 +130,7 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
       next.className = 'next_page';
       next.innerText = $localize`:@@Next:Next`;
       next.addEventListener('click', _ => {
-        let idx = this.hs.snapShot[0] == 'battle_royale' ? 1 : 0;
+        let idx = this.hs.snapShot[0] == 'battle_royale' ? 2 : 0;
         this.hs.snapShot[1 + idx] = 'page';
         this.hs.snapShot[2 + idx] = this.hs.page + 1;
         this.hs.parseUrl(this.hs.snapShot);
@@ -145,7 +142,7 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
       prev.className = 'prev_page';
       prev.innerText = $localize`:@@Previous:Previous`;
       prev.addEventListener('click', _ => {
-        let idx = this.hs.snapShot[0] == 'battle_royale' ? 1 : 0;
+        let idx = this.hs.snapShot[0] == 'battle_royale' ? 2 : 0;
         this.hs.snapShot[1 + idx] = 'page';
         this.hs.snapShot[2 + idx] = this.hs.page - 1;
         this.hs.parseUrl(this.hs.snapShot);
@@ -166,39 +163,55 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     let skill = this.hs.snapShot[0];
     let idx = -1;
     SKILL_LIST.forEach((v, i) => { if (v.o == skill) idx = i; });
-    let output = `<tr><td colspan='5'><div class='badge_base'>
+    let elm = document.createElement('tr');
+    let output = `<td colspan='5'><div class='badge_base'>
     <div class='badge_deco'></div>
     <div class='badge_skill' style="background-position-x: -${idx * 36}px;"></div>
     <div class='badge_label'>${SKILL_LIST[idx].t}</div>
-    </div></td></tr>`;
+    </div></td>`;
+    elm.innerHTML = output;
 
     let container = this.container!.querySelector('.hs_table thead');
-    container!.innerHTML = output + container!.innerHTML;
+    container!.insertBefore(elm, container!.firstChild);
   }
 
   scroll2Target() {
     let snapShot = this.hs.snapShot;
-    let add = snapShot[0] == 'battle_royale' ? 1 : 0;
+    let add = snapShot[0] == 'battle_royale' ? 2 : 0;
     setTimeout(_ => {
-      if (snapShot[0] != 'player' && snapShot[1 + add] == 'rank')
-        document.querySelector(`.hs_table tbody tr:nth-child(${parseInt(snapShot[2 + add])})`)!.scrollIntoView({ behavior: 'smooth', block: 'center' }),
-          document.querySelector(`.hs_table tbody tr:nth-child(${parseInt(snapShot[2 + add])})`)!.classList.add('highlight');
-      else
-        document.querySelector('.badge_deco')!.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (snapShot[0] != 'player' && snapShot[1 + add] == 'rank') {
+        let i = parseInt(snapShot[2 + add]) % 500;
+        i = i == 0 ? 500 : i;
+        this.scroll2Elm(`.hs_table thead tr:nth-child(${i})`, !0);
+      } else { this.scroll2Elm(`.badge_deco`, !0); }
+    }, 100)
+  }
+
+  scroll2Elm(elm: string, highlight: boolean) {
+    let time = 50;
+    let tmp = setInterval(_ => {
+      if (time-- <= 0) {
+        clearInterval(tmp);
+      }
+      if (document.querySelector(elm)!) {
+        document.querySelector(elm)!.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (highlight)
+          document.querySelector(elm)!.classList.add('highlight');
+        clearInterval(tmp);
+      }
     }, 100)
   }
 
   renderBattleRoyaleOptions() {
     let select = document.createElement('select');
     select.id = "br_mode";
-    [{ v: 's', n: $localize`:@@Solo:Solo` },
-    { v: 'd', n: $localize`:@@Duo:Duo` },
-    { v: 't', n: $localize`:@@Trio:Trio` }].forEach(obj => {
+    [{ v: 'solo', n: $localize`:@@Solo:Solo` },
+    { v: 'duo', n: $localize`:@@Duo:Duo` },
+    { v: 'trio', n: $localize`:@@Trio:Trio` }].forEach(obj => {
       select.innerHTML += `<option value='${obj.v}'>${obj.n}</option>`
     })
     select.value = this.hs.brMode;
-    select.addEventListener('change', e => { this.displayBattleRoyale() });
-
+    select.addEventListener('change', e => { this.displayBattleRoyale(e) });
     let container = this.container!.querySelector('.hs_table thead');
     container!.innerHTML = `<tr><td colspan='5'></td></tr>` + container!.innerHTML;
     container = this.container!.querySelector('.hs_table thead td');
@@ -206,23 +219,22 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
 
     select = document.createElement('select');
     select.id = "br_stat";
-    [{ v: 'w', n: $localize`:@@Wins:Wins` },
-    { v: 'k', n: $localize`:@@Kills:Kills` },
-    { v: 'p', n: $localize`:@@Plays:Plays` },
-    { v: 'd', n: $localize`:@@Deaths:Deaths` }].forEach(obj => {
+    [{ v: 'wins', n: $localize`:@@Wins:Wins` },
+    { v: 'kills', n: $localize`:@@Kills:Kills` },
+    { v: 'plays', n: $localize`:@@Plays:Plays` },
+    { v: 'deaths', n: $localize`:@@Deaths:Deaths` }].forEach(obj => {
       select.innerHTML += `<option value='${obj.v}'>${obj.n}</option>`
     })
     select.value = this.hs.brStat;
-    select.addEventListener('change', e => { this.displayBattleRoyale() });
+    select.addEventListener('change', e => this.displayBattleRoyale(e));
     container?.append(select);
   }
 
-  displayBattleRoyale() {
+  displayBattleRoyale(e: any) {
     this.hs.brMode = (<HTMLInputElement>document.getElementById('br_mode')!).value;
     this.hs.brStat = (<HTMLInputElement>document.getElementById('br_stat')!).value;
-    let arr = ['battle_royale', `br_${this.hs.brMode}_${this.hs.brStat}`, 'page', 0]
-    this.hs.setUrl(arr);
-    this.hs.requestData(arr);
+    let arr = ['battle_royale', this.hs.brMode, this.hs.brStat, 'page', 0]
+    this.hs.parseUrl(arr);
   }
 
   displayRank(num: number) {
@@ -230,9 +242,9 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     document.querySelectorAll('tr').forEach(v => {
       v.classList.remove('highlight');
     });
-    document.querySelectorAll('tbody tr')[num - 1].classList.add('highlight');
+    document.querySelectorAll('tbody tr')[(num - 1) % 500].classList.add('highlight');
     if (this.hs.snapShot[0] == "battle_royale") {
-      this.hs.setUrl([this.hs.snapShot[0], 'br_' + this.hs.brMode + '_' + this.hs.brStat, 'rank', num]);
+      this.hs.setUrl([this.hs.snapShot[0], this.hs.brMode, this.hs.brStat, 'rank', num]);
     } else {
       this.hs.setUrl([this.hs.snapShot[0], 'rank', num]);
     }
