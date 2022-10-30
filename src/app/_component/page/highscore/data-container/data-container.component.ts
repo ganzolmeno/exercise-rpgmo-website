@@ -182,7 +182,17 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
       if (snapShot[0] != 'player' && snapShot[1 + add] == 'rank') {
         let i = parseInt(snapShot[2 + add]) % 500;
         i = i == 0 ? 500 : i;
+<<<<<<< Updated upstream
         this.scroll2Elm(`.hs_table thead tr:nth-child(${i})`, !0);
+=======
+<<<<<<< HEAD
+        this.scroll2Elm(`.hs_table tbody tr:nth-child(${i})`, !0);
+      } else if (snapShot[0] == 'player') {
+        this.scroll2Elm(`.hs_table thead tr:nth-child(1)`, !0);
+=======
+        this.scroll2Elm(`.hs_table thead tr:nth-child(${i})`, !0);
+>>>>>>> main
+>>>>>>> Stashed changes
       } else { this.scroll2Elm(`.badge_deco`, !0); }
     }, 100)
   }
