@@ -15,8 +15,8 @@ export class AppComponent {
   ngOnInit(): void {
     this.route.queryParams
       .subscribe(params => {
-        if (params['setlang']) {
-          localStorage['setlang'] = params['setlang'];
+        if (params['lang']) {
+          localStorage['lang'] = params['lang'];
         }
       }
       );

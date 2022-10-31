@@ -1,7 +1,16 @@
 <div class="content">
-  <select  [(ngModel)]="lang" (change)="langChange()">
-    <option *ngFor="let lang of langMapping" [value]="lang.code">{{lang.name}}</option>
-  </select>
+  <div style="display:inline-flex" >
+    <ng-container *ngFor="let map of langMapping">
+      <ng-container *ngIf="map.code == lang">
+        <div class="select selected">{{map.name}}</div>
+      </ng-container>
+      <ng-container *ngIf="map.code != lang">
+        <div class="select" (click)="langChange(map.code)">{{map.name}}</div>
+      </ng-container>
+    </ng-container>
+
+
+  </div>
   <div class="currently_online" i18n="@@people online"><span>{{lastOnline}}</span> online</div>
   <div #xp class="current_xp xp_hidden" i18n="@@2X experience!" hidden>2X experience!</div>
 </div>

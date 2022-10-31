@@ -13,9 +13,9 @@ export class StatusLineComponent implements AfterViewInit {
   @ViewChild("xp") xp!: ElementRef;
   lastOnline: number = 30;
   langMapping = [
-    { code: 'en', name: "English" },
-    { code: 'zh', name: "简体中文" },
-    { code: 'zh-tw', name: "繁體中文" }
+    { code: 'en', name: "EN" },
+    { code: 'zh', name: "简" },
+    { code: 'zh-tw', name: "繁" }
   ];
   lang = this.locale;
 
@@ -36,8 +36,9 @@ export class StatusLineComponent implements AfterViewInit {
     })
   }
 
-  langChange(){
-    location.href = `${location.origin}/copy/${this.lang}/#/?setlang=${this.lang}`;//TODO:
+  langChange(code:string){
+    this.lang = code;
+    location.href = `${location.origin}/copy/${this.lang}/#/?setlang=${this.lang}`;//TODO: path change
   }
 
   private animate2x(bool: boolean) {
