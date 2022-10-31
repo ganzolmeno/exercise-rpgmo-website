@@ -68,7 +68,7 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     } else {
       this.renderSkill();
     }
-
+    this.scroll2Target();
   }
 
   ngOnDestroy(): void {
@@ -302,6 +302,7 @@ export class DataContainerComponent implements AfterViewInit, OnDestroy {
     });
     output += `</tbody></table>`;
     this.container!.innerHTML = output;
+
   }
 
   colorClass(p1: number | undefined, p2: number | undefined) {
